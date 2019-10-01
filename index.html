@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Puzzle with p5.js</title>
+    <style> body {padding: 0; margin: 0;} 
+    #dropzone{
+      padding: 18px;
+      border-style: dashed;
+      font-size: 12pt;
+      width:15%;
+    }
+    </style>
+    <script src="p5.js"></script>
+    <script src="p5.dom.js"></script>
+    <script src="puzzle.js"></script>
+    
+  </head>
+  <body>
+    <font size="5">
+    <center>NUMBER PUZZLE
+    </font>
+     <form id = "rowNumInput">
+      Number of rows: <input type = "number" name = "rowNumber" id = "rowNum" min = 2 max = 10>
+      <input type = "button" onclick = "myInputEvent()" value = "Submit">
+    </form>
+    
+    <br>
+    
+    <div id="puzzle"></div>
+
+    <p id = "dropzone">
+      Drag and drop image file here
+    </p>
+     </center>
+    }
+  </body>
+</html>
