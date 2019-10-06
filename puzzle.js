@@ -44,7 +44,7 @@ function draw() {
   if (rowNumReset){
   	setPuzzle(numberOfTilesPerRow);
   	rowNumReset = false;
-    imageMode = !imageMode;
+    imageMode = false;
   }
   
   
