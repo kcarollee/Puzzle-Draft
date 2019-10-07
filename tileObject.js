@@ -6,12 +6,13 @@ function Tile(number, posx, posy, width, height){
 	this.height = height;
 	this.color = color(255, 100);
 	this.image;
+	this.imagePosx;
+	this.imagePosy;
 	this.getNumber = function(){
 		return this.number;
 	}
 
 	this.setImage = function(img){
-
 		this.image = img;
 	}
 
@@ -20,37 +21,28 @@ function Tile(number, posx, posy, width, height){
 		
 	}
 
-	this.changePos = function(newPosx, newPosy){
-		this.posx = newPosx;
-		this.posy = newPosy;		
+	this.changeImagePos = function(newPosx, newPosy){
+		this.imagePosx = newPosx;
+		this.imagePosy = newPosy;		
 	}
 
-	this.display = function(){	
-		if(!imageMode || this.number === ""){
-			stroke(this.color);
-			fill(this.color);
-			rect(this.posx, this.posy, this.width, this.height);
-			textSize(20);
-			text(String(this.number), this.posx + this.width * 0.45, this.posy + this.height * 0.6);
-		}	
-		else{
-			//console.log(this.image);
-			image(this.image, this.posx, this.posy);
-			//image(puzzleImage, this.posx, this.posy);
-			
-		}
+	this.display = function(){		
+		stroke(this.color);
+		fill(this.color);
+		rect(this.posx, this.posy, this.width, this.height);
+		textSize(20);
+		text(String(this.number), this.posx + this.width * 0.45, this.posy + this.height * 0.6);
+	
 	}
 
 	this.displayImage = function(img){
 		image(img, this.posx, this.posy);
 	}
 
-	this.mouseMovedOver = function(x, y){
-		
+	this.mouseMovedOver = function(x, y){		
 		if (x > this.posx && (x < this.posx + this.width) &&
 			y > this.posy && (y < this.posy + this.height)){
 			this.color = color(255, 200);
-			
 		}
 		else{ 
 			this.color = color(255, 100);

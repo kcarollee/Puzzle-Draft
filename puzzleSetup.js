@@ -34,10 +34,16 @@ async function setPuzzle(newNum){
         row * tileHeight, tileWidth, tileHeight);
         noneRowIndex = row;
         noneColIndex = column;
+        // initialize tile image position
+        tileArray[row][column].imagePosx = column * tileWidth;
+        tileArray[row][column].imagePosy = row * tileHeight;
       }
       else{
       tileArray[row][column] = new Tile(numberArray[row * numberOfTilesPerRow + column], column * tileWidth, 
         row * tileHeight, tileWidth, tileHeight);
+      // initialize tile image position
+      tileArray[row][column].imagePosx = column * tileWidth;
+      tileArray[row][column].imagePosy = row * tileHeight;
       }
     }
   }
@@ -45,12 +51,12 @@ async function setPuzzle(newNum){
   // shuffle in reverse
   for (var i = 0; i < 1000; i++){
     var j = Math.floor(Math.random() * 4);
-    //await sleep(20);
     switch(j){
       // up
       case 0:
         if (noneRowIndex != 0){
           swapNumber(tileArray[noneRowIndex][noneColIndex], tileArray[noneRowIndex - 1][noneColIndex]);
+          swapImagePos(tileArray[noneRowIndex][noneColIndex], tileArray[noneRowIndex - 1][noneColIndex]);
           noneRowIndex -= 1;
         }
         break;
@@ -59,6 +65,7 @@ async function setPuzzle(newNum){
       case 1:
         if (noneRowIndex != numberOfTilesPerRow - 1){
           swapNumber(tileArray[noneRowIndex][noneColIndex], tileArray[noneRowIndex + 1][noneColIndex]);
+          swapImagePos(tileArray[noneRowIndex][noneColIndex], tileArray[noneRowIndex + 1][noneColIndex]);
           noneRowIndex += 1;
         }
         break;
@@ -66,6 +73,7 @@ async function setPuzzle(newNum){
       case 2:
         if (noneColIndex != 0){
           swapNumber(tileArray[noneRowIndex][noneColIndex], tileArray[noneRowIndex][noneColIndex - 1]);
+          swapImagePos(tileArray[noneRowIndex][noneColIndex], tileArray[noneRowIndex][noneColIndex - 1]);
           noneColIndex -= 1;
         }
         break;
@@ -74,6 +82,7 @@ async function setPuzzle(newNum){
       case 3:
       if (noneColIndex != numberOfTilesPerRow - 1){
           swapNumber(tileArray[noneRowIndex][noneColIndex], tileArray[noneRowIndex][noneColIndex + 1]);
+          swapImagePos(tileArray[noneRowIndex][noneColIndex], tileArray[noneRowIndex][noneColIndex + 1]);
           noneColIndex += 1;
         }
         break;
