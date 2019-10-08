@@ -44,7 +44,7 @@ function draw() {
   if (rowNumReset){
   	setPuzzle(numberOfTilesPerRow);
   	rowNumReset = false;
-    imageMode = !imageMode;
+    imageMode = false;
   }
   
   
@@ -58,6 +58,7 @@ function draw() {
   	});
   }
   if(imageMode){
+    print("IMAGEMODE");
     puzzleImage.resize(450, 450);
     testImage = puzzleImage.get(0, 0, 30, 30);
     //image(puzzleImage, 0, 0);
@@ -66,8 +67,8 @@ function draw() {
       for (var column = 0; column < numberOfTilesPerRow; column++){
         if (tileArray[row][column].getNumber() != ""){
           tileArray[row][column].displayImage( 
-            puzzleImage.get(tileArray[row][column].posx, 
-              tileArray[row][column].posy, tileWidth, tileHeight));
+            puzzleImage.get(tileArray[row][column].imagePosx, 
+              tileArray[row][column].imagePosy, tileWidth, tileHeight));
         }
       }
     }
@@ -108,6 +109,14 @@ function swapNumber(tile1, tile2){
 	var temp = tile1.getNumber();
 	tile1.changeNumber(tile2.getNumber());
 	tile2.changeNumber(temp);
+}
+
+function swapImagePos(tile1, tile2){
+  var tempx = tile1.imagePosx;
+  var tempy = tile1.imagePosy;
+
+  tile1.changeImagePos(tile2.imagePosx, tile2.imagePosy);
+  tile2.changeImagePos(tempx, tempy);
 }
 
 function puzzleSolved(){
