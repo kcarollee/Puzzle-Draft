@@ -49,8 +49,9 @@ async function setPuzzle(newNum){
   }
 
   // shuffle in reverse
-  for (var i = 0; i < 1000; i++){
+  for (var i = 0; i < 10000; i++){
     var j = Math.floor(Math.random() * 4);
+    sleep(20);
     switch(j){
       // up
       case 0:

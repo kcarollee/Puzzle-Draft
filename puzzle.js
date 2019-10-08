@@ -58,14 +58,13 @@ function draw() {
   	});
   }
   if(imageMode){
-    print("IMAGEMODE");
     puzzleImage.resize(450, 450);
-    testImage = puzzleImage.get(0, 0, 30, 30);
+    //testImage = puzzleImage.get(0, 0, 30, 30);
     //image(puzzleImage, 0, 0);
     //image(testImage, 50, 100);
     for (var row = 0; row < numberOfTilesPerRow; row++){    
       for (var column = 0; column < numberOfTilesPerRow; column++){
-        if (tileArray[row][column].getNumber() != ""){
+        if (tileArray[row][column].getNumber() !== ""){
           tileArray[row][column].displayImage( 
             puzzleImage.get(tileArray[row][column].imagePosx, 
               tileArray[row][column].imagePosy, tileWidth, tileHeight));
