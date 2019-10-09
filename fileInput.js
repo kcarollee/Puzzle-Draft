@@ -7,7 +7,6 @@ function gotFile(file){
 	puzzleImage = loadImage(file.name);
 	console.log(puzzleImage.width);
 	puzzleImage.get(0, 0, 30, 30);
-	//puzzleImage.hide();
 	/*
 	for (var row = 0; row < numberOfTilesPerRow; row++){ 		
   		for (var column = 0; column < numberOfTilesPerRow; column++){
