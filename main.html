@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="Author" content="Team IPv6 / University of Seoul /">
+  <meta name="description" content="Studying for web pages" />
+
+  <title>Number Puzzle with p5.js</title>
+
+  <!-- // Module // -->
+  <script type="text/javascript" src="module/p5.js"></script>
+  <script type="text/javascript" src="module/p5.dom.js"></script>
+
+  <!-- // JavaScript // -->
+  <script type="text/javascript" src="js/puzzle.js"></script>
+  <script type="text/javascript" src="js/puzzleSetup.js"></script>
+  <script type="text/javascript" src="js/puzzleSolver.js"></script>
+  <script type="text/javascript" src="js/tileMovement.js"></script>
+  <script type="text/javascript" src="js/tileObject.js"></script>
+  <script type="text/javascript" src="js/fileInput.js"></script>
+
+  <!-- // css // -->
+  <link rel="stylesheet" type="text/css" href="css/number_puzzle.css">
+</head>
+
+<body>
+
+  <div id="viewContainer">
+    <div id="title">NUMBER PUZZLE</div>
+
+    <form id="rowNumInput">Number of rows:
+      <input type="number" name="rowNumber" id="rowNum" min=2 max=10>
+      <input type="button" onclick="myInputEvent()" value="Submit">
+    </form>
+
+    <div id="puzzle"></div>
+    <p id="dropzone">Drag and drop image file here</p>
+  </div>
+</body>
+
+</html>
