@@ -1,5 +1,4 @@
 <?PHP 
-
     $N =10;
     $puzzle = puzzle_init($N);
     puzzle_print($puzzle, $N);
