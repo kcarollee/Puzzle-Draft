@@ -17,12 +17,12 @@ function Solver(currentStateArr, goalStateArr){
 
 	}
 
-	this.getHvalue = function(arr){
-		var h = 0;
-		for (var i = 0; i < tileWdith; i++){
-			for (var j = 0; j < tileHeight; j++){
-				if (arr[i][j].)
-			}
-		}
-	}
+	// this.getHvalue = function(arr){
+	// 	var h = 0;
+	// 	for (var i = 0; i < tileWdith; i++){
+	// 		for (var j = 0; j < tileHeight; j++){
+	// 			if (arr[i][j].)
+	// 		}
+	// 	}
+	// }
 }
