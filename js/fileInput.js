@@ -1,4 +1,4 @@
-function gotFile(file){
+function gotFile(file) {
 	imageMode = true;
 	console.log(file.name);
 	puzzleImage = loadImage(file.name);

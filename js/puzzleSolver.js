@@ -1,19 +1,19 @@
-function Solver(currentStateArr, goalStateArr){
+function Solver(currentStateArr, goalStateArr) {
 	this.currentStateArr = currentStateArr;
 	this.goalStateArr = goalStateArr;
 	this.fValue;
 	this.gValue; // # of misplaced tiles
 	this.hValue; // # of nodes traveled from currentState
 
-	this.getChildNodes = function(){
+	this.getChildNodes = function () {
 
 	}
 
-	this.getLeastFValue = function(){
+	this.getLeastFValue = function () {
 
 	}
 
-	this.getGvalue = function(){
+	this.getGvalue = function () {
 
 	}
 

@@ -1,94 +1,70 @@
-function myInputEvent(){
-  numberOfTilesPerRow = document.getElementById("rowNum").value;
-  rowNumReset = true;
-  console.log(numberOfTilesPerRow);
-  console.log("CALLED");
+// name simplify
+// var puzzle_N = numberOfTilesPerRow;
+// var none_col = noneColIndex;
+// var none_row = noneRowIndex;
+
+async function setPuzzle(newNum) {
+    puzzle_N = newNum;
+    tileArray = new Array(puzzle_N);
+    tileWidth = width / puzzle_N;
+    tileHeight = height / puzzle_N;
+
+    init_array();
+    init_tile();
+    init_shuffle();
 }
 
-function initNumberArray(){
-  numberArray = [];
-  for (var i = 0; i < Math.pow(numberOfTilesPerRow, 2) - 1; i++){
-    numberArray.push(i);
-  }
+function myInputEvent() {
+    puzzle_N = document.getElementById("rowNum").value;
+    rowNumReset = true;
+}
+
+function init_array() {
+    numberArray = [];
+    for (var i = 1; i < Math.pow(puzzle_N, 2); i++) {
+        numberArray.push(i);
+    }
 }
 
 function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function setPuzzle(newNum){
-  numberOfTilesPerRow = newNum;
-  tileArray = new Array(numberOfTilesPerRow);
-  tileWidth = width / numberOfTilesPerRow;
-  tileHeight = height / numberOfTilesPerRow;
- 
-  // initialize number array
-  initNumberArray();
-
-  // initialize tiles
-  for (var row = 0; row < numberOfTilesPerRow; row++){
-    tileArray[row] = new Array(numberOfTilesPerRow);
-    for (var column = 0; column < numberOfTilesPerRow; column++){
-      if (row == numberOfTilesPerRow - 1 && column == numberOfTilesPerRow - 1){
-        tileArray[row][column] = new Tile("", column * tileWidth, 
-        row * tileHeight, tileWidth, tileHeight);
-        noneRowIndex = row;
-        noneColIndex = column;
-        // initialize tile image position
-        tileArray[row][column].imagePosx = column * tileWidth;
-        tileArray[row][column].imagePosy = row * tileHeight;
-      }
-      else{
-      tileArray[row][column] = new Tile(numberArray[row * numberOfTilesPerRow + column], column * tileWidth, 
-        row * tileHeight, tileWidth, tileHeight);
-      // initialize tile image position
-      tileArray[row][column].imagePosx = column * tileWidth;
-      tileArray[row][column].imagePosy = row * tileHeight;
-      }
+function init_tile() {
+    for (var row = 0; row < puzzle_N; row++) {
+        tileArray[row] = new Array(puzzle_N);
+        for (var col = 0; col < puzzle_N; col++) {
+            tileArray[row][col] = new Tile(numberArray[row * puzzle_N + col], col * tileWidth, row * tileHeight, tileWidth, tileHeight);
+            tileArray[row][col].imagePosx = col * tileWidth;
+            tileArray[row][col].imagePosy = row * tileHeight;
+        }
     }
-  }
 
-  // shuffle in reverse
-  for (var i = 0; i < 10000; i++){
-    var j = Math.floor(Math.random() * 4);
-    sleep(20);
-    switch(j){
-      // up
-      case 0:
-        if (noneRowIndex != 0){
-          swapNumber(tileArray[noneRowIndex][noneColIndex], tileArray[noneRowIndex - 1][noneColIndex]);
-          swapImagePos(tileArray[noneRowIndex][noneColIndex], tileArray[noneRowIndex - 1][noneColIndex]);
-          noneRowIndex -= 1;
-        }
-        break;
+    var row = puzzle_N - 1;
+    var col = puzzle_N - 1;
+    tileArray[row][col] = new Tile("", col * tileWidth, row * tileHeight, tileWidth, tileHeight);
+    tileArray[row][col].imagePosx = col * tileWidth;
+    tileArray[row][col].imagePosy = row * tileHeight;
+    none_row = row;
+    none_col = col;
+}
 
-      // down
-      case 1:
-        if (noneRowIndex != numberOfTilesPerRow - 1){
-          swapNumber(tileArray[noneRowIndex][noneColIndex], tileArray[noneRowIndex + 1][noneColIndex]);
-          swapImagePos(tileArray[noneRowIndex][noneColIndex], tileArray[noneRowIndex + 1][noneColIndex]);
-          noneRowIndex += 1;
-        }
-        break;
-      // left
-      case 2:
-        if (noneColIndex != 0){
-          swapNumber(tileArray[noneRowIndex][noneColIndex], tileArray[noneRowIndex][noneColIndex - 1]);
-          swapImagePos(tileArray[noneRowIndex][noneColIndex], tileArray[noneRowIndex][noneColIndex - 1]);
-          noneColIndex -= 1;
-        }
-        break;
+function init_shuffle() {
+    var dr = [-1, 1, 0, 0];
+    var dc = [0, 0, -1, 1];
 
-      //right
-      case 3:
-      if (noneColIndex != numberOfTilesPerRow - 1){
-          swapNumber(tileArray[noneRowIndex][noneColIndex], tileArray[noneRowIndex][noneColIndex + 1]);
-          swapImagePos(tileArray[noneRowIndex][noneColIndex], tileArray[noneRowIndex][noneColIndex + 1]);
-          noneColIndex += 1;
-        }
-        break;
+    for (var i = 0; i < 10000; i++) {
+        var j = Math.floor(Math.random() * 4);
+        sleep(20);
 
+        var next_row = none_row + dr[j];
+        var next_col = none_col + dc[j];
+        if (next_row < 0 || next_row > puzzle_N - 1) continue;
+        if (next_col < 0 || next_col > puzzle_N - 1) continue;
+
+        swapNumber(tileArray[none_row][none_col], tileArray[next_row][next_col]);
+        swapImagePos(tileArray[none_row][none_col], tileArray[next_row][next_col]);
+        none_row = next_row;
+        none_col = next_col;
     }
-  }
-
 }

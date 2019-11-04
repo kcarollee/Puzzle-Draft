@@ -1,107 +1,67 @@
-function mousePressed(){
-for (var row = 0; row < numberOfTilesPerRow; row++){
-  		for (var column = 0; column < numberOfTilesPerRow; column++){
-  			if (tileArray[row][column].clicked(mouseX, mouseY)){
-  				// none is to the left
-  				if (row == noneRowIndex && noneColIndex < column){
-  					//swapNumber(tileArray[row][column], tileArray[noneRowIndex][noneColIndex]);
-  					pushLeft(column, noneColIndex, row);
-  					noneRowIndex = row;
-  					noneColIndex = column;
-  				}
-  				// none is to the right
-  				else if (row == noneRowIndex && noneColIndex > column){
-  					//swapNumber(tileArray[row][column], tileArray[noneRowIndex][noneColIndex]);
-  					pushRight(column, noneColIndex, row);
-  					noneRowIndex = row;
-  					noneColIndex = column;
-  				}
-  				// none is to the top
-  				else if (column == noneColIndex && noneRowIndex < row){
-  					//swapNumber(tileArray[row][column], tileArray[noneRowIndex][noneColIndex]);
-  					pushUp(row, noneRowIndex, column);
-  					noneRowIndex = row;
-  					noneColIndex = column;
-  				}
-  				// none is to the bottom
-  				else if (column == noneColIndex && noneRowIndex > row){
-  					//swapNumber(tileArray[row][column], tileArray[noneRowIndex][noneColIndex]);
-  					pushDown(row, noneRowIndex, column);
-  					noneRowIndex = row;
-  					noneColIndex = column;
-  				}
-  			}
-  		}
-  	}
-}
+// var puzzle_N;  // numberOfTilesPerRow
+// var none_col; // noneColIndex;
+// var none_row; // noneRowIndex;
+// var clicked_col; // clickedColIndex
+// var clicked_row; // clickedRowIndex
 
-function pushRight(clickedColIndex, noneColIndex, row){
-	var temp = tileArray[row][noneColIndex].getNumber();
-	var tempImgPosx = tileArray[row][noneColIndex].imagePosx;
-	var tempImgPosy = tileArray[row][noneColIndex].imagePosy;
-	//var temp_2 = tileArray[row][clickedColIndex + 1].getNumber();
-	for (var i = noneColIndex; i >= clickedColIndex; i--){
-			if (i == clickedColIndex){
-				tileArray[row][i].changeNumber(temp);
-				tileArray[row][i].changeImagePos(tempImgPosx, tempImgPosy);
+
+function mousePressed() {
+	for (var row = 0; row < puzzle_N; row++) {
+		for (var col = 0; col < puzzle_N; col++) {
+			if (tileArray[row][col].clicked(mouseX, mouseY)) {
+				if(row==none_row)
+					RightLeft(none_col, col, row);
+				if(col==none_col)
+					UpDown(none_row, row, col);
+				none_row = row;
+				none_col = col;
 			}
-			else{
-				tileArray[row][i].changeNumber(tileArray[row][i - 1].getNumber());
-				tileArray[row][i].changeImagePos(tileArray[row][i - 1].imagePosx,
-					tileArray[row][i - 1].imagePosy);
-			}
+		}
 	}
 }
 
-function pushDown(clickedRowIndex, noneRowIndex, column){
-	var temp = tileArray[noneRowIndex][column].getNumber();
-	var tempImgPosx = tileArray[noneRowIndex][column].imagePosx;
-	var tempImgPosy = tileArray[noneRowIndex][column].imagePosy;
-	for (var i = noneRowIndex; i >= clickedRowIndex; i--){
-			if (i == clickedRowIndex){
-				tileArray[i][column].changeNumber(temp);
-				tileArray[i][column].changeImagePos(tempImgPosx, tempImgPosy);
-			}
-			else{
-				tileArray[i][column].changeNumber(tileArray[i - 1][column].getNumber());
-				tileArray[i][column].changeImagePos(tileArray[i - 1][column].imagePosx,
-					tileArray[i - 1][column].imagePosy);
-
-			}
+function RightLeft(none_col, clicked_col, row) {
+	var temp = tileArray[row][none_col].getNumber();
+	var tempImgPosx = tileArray[row][none_col].imagePosx;
+	var tempImgPosy = tileArray[row][none_col].imagePosy;
+	
+	var dir = (none_col<clicked_col) ? 1 : -1;
+	for (var i = none_col; i != clicked_col; i+=dir) {
+		tileArray[row][i].changeNumber(tileArray[row][i + dir].getNumber());
+		tileArray[row][i].changeImagePos(tileArray[row][i + dir].imagePosx, tileArray[row][i + dir].imagePosy);
 	}
+	
+	tileArray[row][i].changeNumber(temp);
+	tileArray[row][i].changeImagePos(tempImgPosx, tempImgPosy);
+
 }
 
-function pushLeft(clickedColIndex, noneColIndex, row){
-	var temp = tileArray[row][noneColIndex].getNumber();
-	var tempImgPosx = tileArray[row][noneColIndex].imagePosx;
-	var tempImgPosy = tileArray[row][noneColIndex].imagePosy;
-	for (var i = noneColIndex; i <= clickedColIndex; i++){
-			if (i == clickedColIndex){
-				tileArray[row][i].changeNumber(temp);
-				tileArray[row][i].changeImagePos(tempImgPosx, tempImgPosy);
-			}
-			else{
-				tileArray[row][i].changeNumber(tileArray[row][i + 1].getNumber());
-				tileArray[row][i].changeImagePos(tileArray[row][i + 1].imagePosx,
-					tileArray[row][i + 1].imagePosy);
-			}
+function RightLeft(none_col, clicked_col, row) {
+	var temp = tileArray[row][none_col].getNumber();
+	var tempImgPosx = tileArray[row][none_col].imagePosx;
+	var tempImgPosy = tileArray[row][none_col].imagePosy;
+	
+	var dir = (none_col<clicked_col) ? 1 : -1;
+	for (var i = none_col; i != clicked_col; i+=dir) {
+		tileArray[row][i].changeNumber(tileArray[row][i + dir].getNumber());
+		tileArray[row][i].changeImagePos(tileArray[row][i + dir].imagePosx, tileArray[row][i + dir].imagePosy);
 	}
+	
+	tileArray[row][i].changeNumber(temp);
+	tileArray[row][i].changeImagePos(tempImgPosx, tempImgPosy);
 }
 
-function pushUp(clickedRowIndex, noneRowIndex, column){
-	var temp = tileArray[noneRowIndex][column].getNumber();
-	var tempImgPosx = tileArray[noneRowIndex][column].imagePosx;
-	var tempImgPosy = tileArray[noneRowIndex][column].imagePosy;
-	for (var i = noneRowIndex; i <= clickedRowIndex; i++){
-			if (i == clickedRowIndex){
-				tileArray[i][column].changeNumber(temp);
-				tileArray[i][column].changeImagePos(tempImgPosx, tempImgPosy);
-			}
-			else{
-				tileArray[i][column].changeNumber(tileArray[i + 1][column].getNumber());
-				tileArray[i][column].changeImagePos(tileArray[i + 1][column].imagePosx,
-					tileArray[i + 1][column].imagePosy);
 
-			}
+function UpDown(none_row, clicked_row, col) {
+	var temp = tileArray[none_row][col].getNumber();
+	var tempImgPosx = tileArray[none_row][col].imagePosx;
+	var tempImgPosy = tileArray[none_row][col].imagePosy;
+	var dir = (none_row<clicked_row) ? 1 : -1;
+
+	for (var i = none_row; i != clicked_row; i+=dir) {
+		tileArray[i][col].changeNumber(tileArray[i + dir][col].getNumber());
+		tileArray[i][col].changeImagePos(tileArray[i + dir][col].imagePosx, tileArray[i + dir][col].imagePosy);
 	}
+	tileArray[i][col].changeNumber(temp);
+	tileArray[i][col].changeImagePos(tempImgPosx, tempImgPosy);
 }
