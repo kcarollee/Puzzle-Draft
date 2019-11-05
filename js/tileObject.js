@@ -35,7 +35,7 @@ function Tile(number, posx, posy, width, height) {
 	}
 
 	this.displayImg = function (img) {
-		img(img, this.posx, this.posy);
+		image(img, this.posx, this.posy);
 	}
 
 	this.mouseMovedOver = function (x, y) {
