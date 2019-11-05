@@ -14,6 +14,7 @@ function puzzleSolved() {
 	return true;
 	*/
 	// replaced it with the previous code for now
+	
 	for (var row = 0; row < puzzle_N; row++){
   		for (var column = 0; column < puzzle_N; column++){
   			
