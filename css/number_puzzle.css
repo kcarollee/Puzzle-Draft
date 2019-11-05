@@ -8,3 +8,4 @@ body { width:100%;height:100%;background:#fff;color:#666; align-content: center;
 #puzzle { margin-top: 30px; }
 #rowNumInput { font-size: 18px }
 #dropzone { margin-left: auto; margin-right: auto; padding: 18px; border-style: dashed; font-size: 12pt; width: 10%; }
+

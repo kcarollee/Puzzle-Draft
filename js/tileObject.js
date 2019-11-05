@@ -49,4 +49,5 @@ function Tile(number, posx, posy, width, height) {
 		return ( ( this.posx < x ) && ( x < this.posx + this.width ) &&
 				 ( this.posy < y ) && ( y < this.posy + this.height ));
 	}
+
 }

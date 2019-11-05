@@ -6,16 +6,12 @@
 
 
 function mousePressed() {
-	for (var row = 0; row < puzzle_N; row++) {
-		for (var col = 0; col < puzzle_N; col++) {
-			if (tileArray[row][col].clicked(mouseX, mouseY)) {
-				if(row==none_row || col==none_col){
-					console.log("move "+"("+none_row+","+none_col+")"+" to ("+row+","+col+")");
-					move(none_row, none_col, row, col);
-					none_row = row;
-					none_col = col;
-				}
-			}
+	if (tileArray[mouseR][mouseC].clicked(mouseX, mouseY)) {
+		if(mouseR==none_row || mouseC==none_col){
+			console.log("move "+"("+none_row+","+none_col+")"+" to ("+mouseR+","+mouseC+")");
+			move(none_row, none_col, mouseR, mouseC);
+			none_row = mouseR;
+			none_col = mouseC;
 		}
 	}
 }
@@ -25,7 +21,6 @@ function move(none_row, none_col, row, col) {
 	var dc = 0 ;
 	if( none_col == col ) dr = none_row < row ? 1 : -1 ;
 	if( none_row == row ) dc = none_col < col ? 1 : -1 ;
-
 
 	var temp = tileArray[none_row][none_col].getNumber();
 	var tempImgPosx = tileArray[none_row][none_col].imgPosx;
