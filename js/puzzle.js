@@ -67,8 +67,6 @@ function draw() {
 }
 
 
-
-
 function highlight() {
   dropzone.style('background-color', '#ccc');
 }
@@ -77,15 +75,6 @@ function unhighlight() {
   dropzone.style('background-color', '#fff');
 }
 
-
-
-function mouseMoved() {
-  for (var row = 0; row < puzzle_N; row++) {
-    for (var col = 0; col < puzzle_N; col++) {
-      tileArray[row][col].mouseMovedOver(mouseX, mouseY);
-    }
-  }
-}
 
 function swapNumber(tile1, tile2) {
   var temp = tile1.getNumber();
