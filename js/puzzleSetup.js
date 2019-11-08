@@ -34,15 +34,16 @@ async function setPuzzle(newNum=puzzle_N) {
     tileWidth = width / puzzle_N;
     tileHeight = height / puzzle_N;
 
-    init_array();
+    //init_array();
     init_tile();
-    init_shuffle();
+    //init_shuffle();
 }
 
 function init_array() {
     numberArray = [];
     for (var i = 1; i < Math.pow(puzzle_N, 2); i++) {
         numberArray.push(i);
+        console.log(i);
     }
 }
 function init_tile() {

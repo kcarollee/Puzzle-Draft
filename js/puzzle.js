@@ -1,4 +1,4 @@
-var puzzle_N = 3; // numberOfTilesPerRow
+//var puzzle_N = 3; // numberOfTilesPerRow
 var none_col; // noneColIndex;
 var none_row; // noneRowIndex;
 var reset; // rowNumReset;
@@ -6,7 +6,7 @@ var reset; // rowNumReset;
 var tileArray;
 var tileWidth;
 var tileHeight;
-var numberArray = [];
+//var numberArray = [];
 var randomizedNumberArray;
 var dropzone;
 var puzzleImg;
