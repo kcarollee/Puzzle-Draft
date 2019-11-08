@@ -14,7 +14,7 @@ function myInputEvent() {
 function setup() {
     reset = false;
     // dropzone init
-    imgMode = false;
+    imageMode = false;
     dropzone = select('#dropzone');
     dropzone.dragOver(highlight);
     dropzone.dragLeave(unhighlight);
@@ -50,16 +50,16 @@ function init_tile() {
         tileArray[row] = new Array(puzzle_N);
         for (var col = 0; col < puzzle_N; col++) {
             tileArray[row][col] = new Tile(numberArray[row * puzzle_N + col], col * tileWidth, row * tileHeight, tileWidth, tileHeight);
-            tileArray[row][col].imgPosx = col * tileWidth;
-            tileArray[row][col].imgPosy = row * tileHeight;
+            tileArray[row][col].imagePosx = col * tileWidth;
+            tileArray[row][col].imagePosy = row * tileHeight;
         }
     }
 
     var row = puzzle_N - 1;
     var col = puzzle_N - 1;
     tileArray[row][col] = new Tile("", col * tileWidth, row * tileHeight, tileWidth, tileHeight);
-    tileArray[row][col].imgPosx = col * tileWidth;
-    tileArray[row][col].imgPosy = row * tileHeight;
+    tileArray[row][col].imagePosx = col * tileWidth;
+    tileArray[row][col].imagePosy = row * tileHeight;
     none_row = row;
     none_col = col;
 }
@@ -78,7 +78,7 @@ function init_shuffle() {
         if (next_col < 0 || next_col > puzzle_N - 1) continue;
 
         swapNumber(tileArray[none_row][none_col], tileArray[next_row][next_col]);
-        swapImgPos(tileArray[none_row][none_col], tileArray[next_row][next_col]);
+        swapImagePos(tileArray[none_row][none_col], tileArray[next_row][next_col]);
         none_row = next_row;
         none_col = next_col;
     }

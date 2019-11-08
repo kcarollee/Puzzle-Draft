@@ -1,7 +1,7 @@
 function gotFile(file) {
-	imgMode = true;
+	imageMode = true;
 	console.log(file.name);
-	puzzleImg = loadImage(file.name);
-	console.log(puzzleImg.width);
-	puzzleImg.get(0, 0, 30, 30);
+	puzzleImage = loadImage(file.name);
+	console.log(puzzleImage.width);
+	puzzleImage.get(0, 0, 30, 30);
  }

@@ -5,24 +5,24 @@ function Tile(number, posx, posy, width, height) {
 	this.width = width;
 	this.height = height;
 	this.color = color(255, 100);
-	this.img;
-	this.imgPosx;
-	this.imgPosy;
+	this.image;
+	this.imagePosx;
+	this.imagePosy;
 	this.getNumber = function () {
 		return this.number;
 	}
 
-	this.setImg = function (img) {
-		this.img = img;
+	this.setImage = function (image) {
+		this.image = image;
 	}
 
 	this.changeNumber = function (newNum) {
 		this.number = newNum;
 	}
 
-	this.changeImgPos = function (newPosx, newPosy) {
-		this.imgPosx = newPosx;
-		this.imgPosy = newPosy;
+	this.changeImagePos = function (newPosx, newPosy) {
+		this.imagePosx = newPosx;
+		this.imagePosy = newPosy;
 	}
 
 	this.display = function () {
@@ -34,8 +34,8 @@ function Tile(number, posx, posy, width, height) {
 
 	}
 
-	this.displayImg = function (img) {
-		image(img, this.posx, this.posy);
+	this.displayImage = function (image) {
+		image(image, this.posx, this.posy);
 	}
 
 	this.mouseMovedOver = function (x, y) {

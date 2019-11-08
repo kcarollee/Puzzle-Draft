@@ -23,14 +23,14 @@ function move(none_row, none_col, row, col) {
 	if( none_row == row ) dc = none_col < col ? 1 : -1 ;
 
 	var temp = tileArray[none_row][none_col].getNumber();
-	var tempImgPosx = tileArray[none_row][none_col].imgPosx;
-	var tempImgPosy = tileArray[none_row][none_col].imgPosy;
+	var tempImagePosx = tileArray[none_row][none_col].imagePosx;
+	var tempImagePosy = tileArray[none_row][none_col].imagePosy;
 	
 	for (var C = none_col, R= none_row; C != col || R != row ; C+=dc, R +=dr) {
 		tileArray[R][C].changeNumber(tileArray[R+dr][C + dc].getNumber());
-		tileArray[R][C].changeImgPos(tileArray[R+dr][C + dc].imgPosx, tileArray[R+dr][C + dc].imgPosy);
+		tileArray[R][C].changeImagePos(tileArray[R+dr][C + dc].imagePosx, tileArray[R+dr][C + dc].imagePosy);
 	}
 	
 	tileArray[row][col].changeNumber(temp);
-	tileArray[row][col].changeImgPos(tempImgPosx, tempImgPosy);
+	tileArray[row][col].changeImagePos(tempImagePosx, tempImagePosy);
 }
