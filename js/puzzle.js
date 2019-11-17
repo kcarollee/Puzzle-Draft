@@ -31,8 +31,6 @@ function draw() {
   //ellipse(30, 30, 30, 30);
   //tile.display();
 
-
-
   stroke(20, 20, 400);
   ellipse(mouseX, mouseY, 2 * (mouseX - pmouseX), 2 * (mouseY - pmouseY));
   if (puzzleSolved()) {
