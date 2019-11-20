@@ -36,7 +36,6 @@ async function setPuzzle(newNum=puzzle_N) {
 
     //init_array();
     init_tile();
-    //init_shuffle();
 }
 
 function init_array() {
@@ -53,16 +52,22 @@ function init_tile() {
             tileArray[row][col] = new Tile(numberArray[row * puzzle_N + col], col * tileWidth, row * tileHeight, tileWidth, tileHeight);
             tileArray[row][col].imgPosx = col * tileWidth;
             tileArray[row][col].imgPosy = row * tileHeight;
+
+            if (numberArray[row * puzzle_N + col] == 0){
+                tileArray[row][col] = new Tile("", col * tileWidth, row * tileHeight, tileWidth, tileHeight);
+                tileArray[row][col].imgPosx = col * tileWidth;
+                tileArray[row][col].imgPosy = row * tileHeight;
+                none_row = row;
+                none_col = col;
+            }
+            else{
+                tileArray[row][col] = new Tile(numberArray[row * puzzle_N + col], col * tileWidth, row * tileHeight, tileWidth, tileHeight);
+                tileArray[row][col].imgPosx = col * tileWidth;
+                tileArray[row][col].imgPosy = row * tileHeight;
+            }
         }
     }
-
-    var row = puzzle_N - 1;
-    var col = puzzle_N - 1;
-    tileArray[row][col] = new Tile("", col * tileWidth, row * tileHeight, tileWidth, tileHeight);
-    tileArray[row][col].imgPosx = col * tileWidth;
-    tileArray[row][col].imgPosy = row * tileHeight;
-    none_row = row;
-    none_col = col;
+    
 }
 
 function init_shuffle() {

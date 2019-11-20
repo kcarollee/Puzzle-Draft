@@ -1,39 +1,28 @@
 <?PHP 
-      echo $_GET['rowNumber'];
-      if (isset($_GET['rowNumber'])){
-
-       $N = $_GET['rowNumber'];
-       print "rowNUMBER: ".$N."<br>";
-     }
-    else $N = 5;
+    $N =2;
+    $number_array = array();
     $puzzle = puzzle_init($N);
-    $number_array = array(); // array that gets passed over to jsprint
-    /*
     puzzle_print($puzzle, $N);
     print("<br>");
     print("<br>");
     print("MIX 1 <br>");
-    */
     $puzzle = puzzle_mix($puzzle, $N);
-    /*
     puzzle_print($puzzle, $N);
     print("<br>");
     print("<br>");
     print("MIX 2 <br>");
-    */
     $puzzle = puzzle_mix2($puzzle, $N);
-    //puzzle_print($puzzle, $N);
-    
-    // push $puzzle elements to $number_array
+    puzzle_print($puzzle, $N);
     for($i=0;$i<$N;$i++){
-        for($j=0;$j<$N;$j++){
-          if ($puzzle[$i][$j] == pow($N, 2) - 1) continue;
-          array_push($number_array, $puzzle[$i][$j] + 1);
-        }
+            for($j=0;$j<$N;$j++){
+              //if ($puzzle[$i][$j] == pow($N, 2) - 1) continue;
+              array_push($number_array, $puzzle[$i][$j]);
+            }
     }
 
-    foreach ($number_array as $elem) {
-      print $elem."<br>";
+    foreach($number_array as $n){
+      print $n." ";
+
     }
 
     function puzzle_init($N=3){
@@ -151,7 +140,7 @@
       }
     }
 
-        //printf($posCnt."개 unmixed <br>");
+        printf($posCnt."개 unmixed <br>");
   }
 
 ?>

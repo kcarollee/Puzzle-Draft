@@ -23,7 +23,6 @@ function draw() {
     setPuzzle(puzzle_N);
     reset = false;
     imgMode = false;
-    console.log("!!!");
   }
   
   // put drawing code here
@@ -44,9 +43,7 @@ function draw() {
   }
   if (imgMode) {
     puzzleImg.resize(450, 450);
-    //testImg = puzzleImg.get(0, 0, 30, 30);
-    //img(puzzleImg, 0, 0);
-    //img(testImg, 50, 100);
+
     for (var row = 0; row < puzzle_N; row++) {
       for (var col = 0; col < puzzle_N; col++) {
         if (tileArray[row][col].getNumber() !== "") {
