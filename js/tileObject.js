@@ -4,7 +4,7 @@ function Tile(number, posx, posy, width, height) {
 	this.posy = posy;
 	this.width = width;
 	this.height = height;
-	this.color = color(255, 100);
+	this.color = color(50, 50, 200, 200);
 	this.img;
 	this.imgPosx;
 	this.imgPosy;
@@ -27,8 +27,11 @@ function Tile(number, posx, posy, width, height) {
 
 	this.display = function () {
 		stroke(this.color);
-		fill(this.color);
+		fill(0);
 		rect(this.posx, this.posy, this.width, this.height);
+		fill(this.color);
+		rect(this.posx + 8, this.posy + 8, this.width - 16, this.height - 16);
+		fill(255);
 		textSize(20);
 		text(String(this.number), this.posx + this.width * 0.45, this.posy + this.height * 0.6);
 
@@ -39,10 +42,11 @@ function Tile(number, posx, posy, width, height) {
 	}
 
 	this.mouseMovedOver = function (x, y) {
-		this.color = color(255, 100);
+		//this.color = color(255, 100);
 		if( ( this.posx < x ) && ( x < this.posx + this.width ) &&
 			( this.posy < y ) && ( y < this.posy + this.height ))
 				this.color = color(255, 200);
+		else this.color = color(50, 50, 200, 200);
 	}
 
 	this.clicked = function (x, y) {

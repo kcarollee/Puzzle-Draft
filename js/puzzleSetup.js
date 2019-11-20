@@ -14,6 +14,7 @@ function myInputEvent() {
 function setup() {
     reset = false;
     // dropzone init
+    deg = 0;
     imgMode = false;
     dropzone = select('#dropzone');
     dropzone.dragOver(highlight);
