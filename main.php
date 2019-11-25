@@ -36,7 +36,8 @@
 <input type="number" name="rowNumber" id="rowNum" min=2 max=10>
 
 <input type="submit" onclick="myInputEvent()" value="Submit">
-<input type="button" onclick="solveInputEvent();" value="Auto">
+<input type="button" onclick="solveInputEvent();" value="Solve">
+<input type="button" onclick="autoSolveInputEvent();" value="AutoSolve">
 <?PHP 
     // Setting puzzle size 
     if (isset($_GET['rowNumber'])) 

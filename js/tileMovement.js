@@ -10,9 +10,11 @@ function mousePressed() {
 	if (tileArray[mouseR][mouseC].clicked(mouseX, mouseY)) {
 		if (mouseR == none_row || mouseC == none_col) {
 			console.log("move " + "(" + none_row + "," + none_col + ")" + " to (" + mouseR + "," + mouseC + ")");
+			puzzle_dist();
 			move(none_row, none_col, mouseR, mouseC);
 			none_row = mouseR;
 			none_col = mouseC;
+			
 		}
 	}
 }
