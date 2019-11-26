@@ -4,6 +4,8 @@ function Tile(number, posx, posy, width, height) {
 	this.posy = posy;
 	this.width = width;
 	this.height = height;
+	this.initWidth = 2;
+	this.initHeight = 2;
 	this.color = color(50, 150, 200, 255);
 	this.img;
 	this.imgPosx;
@@ -30,10 +32,17 @@ function Tile(number, posx, posy, width, height) {
 		fill(0);
 		rect(this.posx, this.posy, this.width, this.height);
 		fill(this.color);
-		rect(this.posx + 8, this.posy + 8, this.width - 16, this.height - 16, 10, 10, 10, 10);
-		fill(255);
-		textSize(20);
-		text(String(this.number), this.posx + this.width * 0.45, this.posy + this.height * 0.6);
+		if (this.initWidth <= this.width - 16 && this.initHeight <= this.height - 16){
+			rect(this.posx + 8, this.posy + 8, this.initWidth, this.initHeight, 10, 10, 10, 10);
+			this.initHeight += 12;
+			this.initWidth += 12;
+		}
+		else {
+			rect(this.posx + 8, this.posy + 8, this.width - 16, this.height - 16, 10, 10, 10, 10);
+			fill(255);
+			textSize(20);
+			text(String(this.number), this.posx + this.width * 0.45, this.posy + this.height * 0.6);
+		}
 
 	}
 
