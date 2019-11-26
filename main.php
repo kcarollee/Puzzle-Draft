@@ -8,7 +8,7 @@
   <meta name="Author" content="Team IPv6 / University of Seoul /">
   <meta name="description" content="Studying for web pages" />
 
-  <title>Number Puzzle ver 1 </title>
+  <title >Number Puzzle ver 1 </title>
 
   <!-- // Module // -->
   <script type="text/javascript" src="module/p5.js"></script>
@@ -28,7 +28,7 @@
   <link rel="stylesheet" type="text/css" href="css/number_puzzle.css">
 </head>
 
-<body> 
+<body style="background-color: rgb(50, 20, 150, 0.5)"> 
   <div id="viewContainer">
     <div id="title">NUMBER PUZZLE ver1</div>
     <form id="rowNumInput" method="get">Number of rows:
