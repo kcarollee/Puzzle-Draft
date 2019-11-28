@@ -25,16 +25,8 @@ function draw() {
     reset = false;
     imgMode = false;
   }
-  
-  // put drawing code here
   background(0);
-  //ellipse(30, 30, 30, 30);
-  //tile.display();
-
-
-
-  stroke(20, 20, 400);
-  ellipse(mouseX, mouseY, 2 * (mouseX - pmouseX), 2 * (mouseY - pmouseY));
+  
   if (puzzleSolved()) {
     tileArray.forEach(function (element) {
       element.forEach(function (e) {

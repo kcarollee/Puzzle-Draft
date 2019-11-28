@@ -27,6 +27,25 @@ function Tile(number, posx, posy, width, height) {
 		this.imgPosy = newPosy;
 	}
 
+	this.changeTilePos = function(newPosx, newPosy){
+		if (newPosx != this.posx){
+			if (newPosx > this.posx){
+				while (newPosx != this.posx) this.posx++;
+			}
+			else{
+				while (newPosx != this.posx) this.posx--;
+			}
+		}
+		else if (newPosy != this.posy){
+			if (newPosy > this.posy){
+				while (newPosy != this.posy) this.posy++;
+			}
+			else{
+				while (newPosy != this.posy) this.posy--;
+			}
+		}
+	}
+
 	this.display = function () {
 		stroke(this.color);
 		fill(0);
