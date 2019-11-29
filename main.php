@@ -8,7 +8,7 @@
   <meta name="Author" content="Team IPv6 / University of Seoul /">
   <meta name="description" content="Studying for web pages" />
 
-  <title >Number Puzzle ver 1 </title>
+  <title >Number Puzzle ver 2 </title>
 
   <!-- // Module // -->
   <script type="text/javascript" src="module/p5.js"></script>
@@ -31,7 +31,7 @@
 
 <body style="background-color: rgb(50, 20, 150, 0.5)"> 
   <div id="viewContainer">
-    <div id="title">NUMBER PUZZLE ver1</div>
+    <div id="title">NUMBER PUZZLE ver 2</div>
     <form id="rowNumInput" method="get">Number of rows:
       <input type="number" name="rowNumber" id="rowNum" min=2 max=10>
 
@@ -39,9 +39,10 @@
       <input type="button" onclick="solveInputEvent();" value="Solve">
       <input type="button" onclick="autoSolveInputEvent();" value="AutoSolve">
       <?PHP 
-      if (isset($_GET['rowNumber']) AND $_GET['rowNumber'] != '') $N = $_GET['rowNumber'];
-      
+      if (isset($_GET['rowNumber']) AND $_GET['rowNumber'] != '') 
+        $N = $_GET['rowNumber'];
       else $N = 5;
+
       $puzzle = puzzle_init($N);
       $number_array = array(); // array that gets passed over to jsprint
       $puzzle = puzzle_mix($puzzle, $N);

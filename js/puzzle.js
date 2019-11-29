@@ -37,6 +37,7 @@ function draw() {
       });
     });
   }
+
   if (imgMode) {
     puzzleImg.resize(450, 450);
     for (var row = 0; row < puzzle_N; row++) {
@@ -49,11 +50,13 @@ function draw() {
       }
     }
   } else {
+
     for (var row = 0; row < puzzle_N; row++) {
       for (var col = 0; col < puzzle_N; col++) {
         tileArray[row][col].display();
       }
     }
+
   }
 }
 
