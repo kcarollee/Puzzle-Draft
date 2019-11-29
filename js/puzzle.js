@@ -80,5 +80,3 @@ function swapImgPos(tile1, tile2) {
   tile1.changeImgPos(tile2.imgPosx, tile2.imgPosy);
   tile2.changeImgPos(tempx, tempy);
 }
-
-

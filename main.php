@@ -37,7 +37,8 @@
       <input type="submit" onclick="myInputEvent()" value="Submit">
       <input type="button" onclick="myInputEvent()" value="Auto">
       <?PHP 
-      if (isset($_GET['rowNumber']) AND $_GET['rowNumber'] != '') $N = $_GET['rowNumber'];
+      if (isset($_GET['rowNumber']) AND $_GET['rowNumber'] != '') 
+      $N = $_GET['rowNumber'];
       
       else $N = 5;
       $puzzle = puzzle_init($N);
@@ -165,10 +166,10 @@
   console.log(numberArray);
   for (var i = 0; i < numberArray.length; i++) console.log(numberArray[i]);
 </script>
-    </form>
-    <div id="puzzle"></div>
-    <p id="dropzone">Drag and drop image file here</p>
-  </div>
+</form>
+<div id="puzzle"></div>
+<p id="dropzone">Drag and drop image file here</p>
+</div>
 </body>
 
 </html>

@@ -29,10 +29,12 @@
         $puzzle = array();
     $size = $N * $N;
 
-    for ($i = 0; $i < $size - 2; $i++)
+    for ($i = 0; $i < $size - 1; $i++)
+    // for ($i = 0; $i < $size - 2; $i++)
             $puzzle[$i / $N][$i % $N] = $i;
-    $puzzle[$N - 1][$N - 2] = -1;
-    $puzzle[$N - 1][$N - 1] = -1;
+    // $puzzle[$N - 1][$N - 2] = -1;
+    // $puzzle[$N - 1][$N - 1] = -1;
+    $puzzle[$N - 1][$N - 1] = 0;
 
     return $puzzle;
     }
