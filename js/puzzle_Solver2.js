@@ -1,5 +1,5 @@
-var sR = 0; 
-var sC = 0;
+var sR; 
+var sC;
 var auto_flag = false;
 var auto_id = null;
 var answer = null;
@@ -11,7 +11,7 @@ async function autoSolveInputEvent() {
 
     if(auto_flag){
         console.log("auto...");
-        timer = setInterval(solve, 1000);
+        timer = setInterval(solve, 500);
     }else{
         clearInterval(timer);
     }    
@@ -51,30 +51,24 @@ function puzzle_dist(){
 function solve() {
     console.log( auto_flag ? "auto solve " : "solve");
 
-    // if(answer==null){
-     
-    // }
-
-    var dr = 1;
-    var dc = 1;
     var num = tileArray[none_row][none_col].getNumber();
 
     if(""!=tileArray[sR][sC].getNumber()){
         sR = none_row;
         sC = none_col;
     }
-    var nR = sR + dr;
-    var nC = sC + dc;
-    var imgPos = new Array(tileArray[sR][sC].imgPosx, tileArray[sR][sC].imgPosy);
-    tileArray[sR][sC].changeNumber(tileArray[nR][nC].getNumber());
-    tileArray[sR][sC].changeImgPos(tileArray[nR][nC].imgPosx, tileArray[nR][nC].imgPosy);
-    tileArray[nR][nC].changeNumber(num);
-    tileArray[nR][nC].changeImgPos(imgPos);
+    // var nR = none_row-1;
+    // var nC = none_col-1;
+    // var imgPos = new Array(tileArray[sR][sC].imgPosx, tileArray[sR][sC].imgPosy);
+    // tileArray[sR][sC].changeNumber(tileArray[nR][nC].getNumber());
+    // tileArray[sR][sC].changeImgPos(tileArray[nR][nC].imgPosx, tileArray[nR][nC].imgPosy);
+    // tileArray[nR][nC].changeNumber(num);
+    // tileArray[nR][nC].changeImgPos(imgPos);
 
-
+    console.log(`why..?`)
     puzzle_dist();
-    none_row = nR;
-    none_col = nC;
+    // none_row = nR;
+    // none_col = nC;
 }
 
 function solve_example() {
