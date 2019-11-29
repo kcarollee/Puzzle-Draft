@@ -17,34 +17,29 @@ var goalStateArr;
 var puzzleImg
 
 var testImg;
+var deg;
 
 function draw() {
   if (reset) {
     setPuzzle(puzzle_N);
     reset = false;
     imgMode = false;
-    console.log("!!!");
   }
-  
-  // put drawing code here
   background(0);
-  //ellipse(30, 30, 30, 30);
-  //tile.display();
-
-  stroke(20, 20, 400);
-  ellipse(mouseX, mouseY, 2 * (mouseX - pmouseX), 2 * (mouseY - pmouseY));
+  
   if (puzzleSolved()) {
     tileArray.forEach(function (element) {
       element.forEach(function (e) {
-        e.color = color(random(0, 244), random(0, 244), random(0, 244));
+        e.color = color(Math.abs(200 * Math.sin(frameCount / 20 - e.posx)), 
+          Math.abs(80 * Math.cos(frameCount / 20 - e.posy)),
+         50 * Math.sin(frameCount / 15 - e.posx * e.posy));
+
       });
     });
   }
+
   if (imgMode) {
     puzzleImg.resize(450, 450);
-    //testImg = puzzleImg.get(0, 0, 30, 30);
-    //img(puzzleImg, 0, 0);
-    //img(testImg, 50, 100);
     for (var row = 0; row < puzzle_N; row++) {
       for (var col = 0; col < puzzle_N; col++) {
         if (tileArray[row][col].getNumber() !== "") {
@@ -54,13 +49,14 @@ function draw() {
         }
       }
     }
-
   } else {
+
     for (var row = 0; row < puzzle_N; row++) {
       for (var col = 0; col < puzzle_N; col++) {
         tileArray[row][col].display();
       }
     }
+
   }
 }
 

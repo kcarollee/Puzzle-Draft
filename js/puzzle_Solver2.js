@@ -57,18 +57,18 @@ function solve() {
         sR = none_row;
         sC = none_col;
     }
-    // var nR = none_row-1;
-    // var nC = none_col-1;
-    // var imgPos = new Array(tileArray[sR][sC].imgPosx, tileArray[sR][sC].imgPosy);
-    // tileArray[sR][sC].changeNumber(tileArray[nR][nC].getNumber());
-    // tileArray[sR][sC].changeImgPos(tileArray[nR][nC].imgPosx, tileArray[nR][nC].imgPosy);
-    // tileArray[nR][nC].changeNumber(num);
-    // tileArray[nR][nC].changeImgPos(imgPos);
+    var nR = none_row-1;
+    var nC = none_col-1;
+    var imgPos = new Array(tileArray[sR][sC].imgPosx, tileArray[sR][sC].imgPosy);
+    tileArray[sR][sC].changeNumber(tileArray[nR][nC].getNumber());
+    tileArray[sR][sC].changeImgPos(tileArray[nR][nC].imgPosx, tileArray[nR][nC].imgPosy);
+    tileArray[nR][nC].changeNumber(num);
+    tileArray[nR][nC].changeImgPos(imgPos);
 
     console.log(`why..?`)
     puzzle_dist();
-    // none_row = nR;
-    // none_col = nC;
+     none_row = nR;
+     none_col = nC;
 }
 
 function solve_example() {
