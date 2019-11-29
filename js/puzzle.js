@@ -1,4 +1,4 @@
-var puzzle_N = 3; // numberOfTilesPerRow
+//var puzzle_N = 3; // numberOfTilesPerRow
 var none_col; // noneColIndex;
 var none_row; // noneRowIndex;
 var reset; // rowNumReset;
@@ -6,57 +6,48 @@ var reset; // rowNumReset;
 var tileArray;
 var tileWidth;
 var tileHeight;
-var numberArray = [];
+//var numberArray = [];
 var randomizedNumberArray;
 var dropzone;
-var puzzleImage;
-var imageMode;
+var puzzleImg;
+var imgMode;
 var inputBar;
 
 var goalStateArr;
-var puzzleImage
+var puzzleImg
 
-var testImage;
+var testImg;
+var deg;
 
 function draw() {
   if (reset) {
     setPuzzle(puzzle_N);
     reset = false;
-    imageMode = false;
-    console.log("!!!");
+    imgMode = false;
   }
-  
-  // put drawing code here
   background(0);
-  //ellipse(30, 30, 30, 30);
-  //tile.display();
-
-
-
-  stroke(20, 20, 400);
-  ellipse(mouseX, mouseY, 2 * (mouseX - pmouseX), 2 * (mouseY - pmouseY));
+  
   if (puzzleSolved()) {
     tileArray.forEach(function (element) {
       element.forEach(function (e) {
-        e.color = color(random(0, 244), random(0, 244), random(0, 244));
+        e.color = color(Math.abs(200 * Math.sin(frameCount / 20 - e.posx)), 
+          Math.abs(80 * Math.cos(frameCount / 20 - e.posy)),
+         50 * Math.sin(frameCount / 15 - e.posx * e.posy));
+
       });
     });
   }
-  if (imageMode) {
-    puzzleImage.resize(450, 450);
-    //testImage = puzzleImage.get(0, 0, 30, 30);
-    //image(puzzleImage, 0, 0);
-    //image(testImage, 50, 100);
+  if (imgMode) {
+    puzzleImg.resize(450, 450);
     for (var row = 0; row < puzzle_N; row++) {
       for (var col = 0; col < puzzle_N; col++) {
         if (tileArray[row][col].getNumber() !== "") {
-          tileArray[row][col].displayImage(
-            puzzleImage.get(tileArray[row][col].imagePosx,
-              tileArray[row][col].imagePosy, tileWidth, tileHeight));
+          tileArray[row][col].displayImg(
+            puzzleImg.get(tileArray[row][col].imgPosx,
+              tileArray[row][col].imgPosy, tileWidth, tileHeight));
         }
       }
     }
-
   } else {
     for (var row = 0; row < puzzle_N; row++) {
       for (var col = 0; col < puzzle_N; col++) {
@@ -82,24 +73,12 @@ function swapNumber(tile1, tile2) {
   tile2.changeNumber(temp);
 }
 
-function swapImagePos(tile1, tile2) {
-  var tempx = tile1.imagePosx;
-  var tempy = tile1.imagePosy;
+function swapImgPos(tile1, tile2) {
+  var tempx = tile1.imgPosx;
+  var tempy = tile1.imgPosy;
 
-  tile1.changeImagePos(tile2.imagePosx, tile2.imagePosy);
-  tile2.changeImagePos(tempx, tempy);
+  tile1.changeImgPos(tile2.imgPosx, tile2.imgPosy);
+  tile2.changeImgPos(tempx, tempy);
 }
 
 
-
-function puzzleSolved() {
-	var N = puzzle_N;
-	if (tileArray[N - 1][N - 1].getNumber() != "")
-		return false;
-	for (var num = 0; num < N * N - 1; num++) {
-		if (tileArray[num / N][num % N].getNumber() != num + 1)
-			return false;
-	}
-
-	return true;
-}
