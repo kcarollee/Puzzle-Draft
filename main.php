@@ -31,7 +31,7 @@
 
 <body> 
 <div id="viewContainer">
-<div id="title">NUMBER PUZZLE ver1</div>
+<div id="title">NUMBER PUZZLE ver2</div>
 <form id="rowNumInput" method="get">Number of rows:
 <input type="number" name="rowNumber" id="rowNum" min=2 max=10>
 
