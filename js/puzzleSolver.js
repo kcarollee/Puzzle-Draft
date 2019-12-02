@@ -16,15 +16,15 @@ function puzzleSolved() {
 	// replaced it with the previous code for now
 	
 	for (var row = 0; row < puzzle_N; row++){
-  		for (var column = 0; column < puzzle_N; column++){
+  		for (var col = 0; col < puzzle_N; col++){
   			
-  			if (row == puzzle_N - 1 && column == puzzle_N - 1){
-  				if (tileArray[row][column].getNumber() != ""){
+  			if (row == puzzle_N - 1 && col == puzzle_N - 1){
+  				if (tileArray[row][col].getNumber() != ""){
   					return false;
   				}
   			}
   			else{
-  				if (tileArray[row][column].getNumber() != row * puzzle_N + column + 1){
+  				if (tileArray[row][col].getNumber() != row * puzzle_N + col + 1){
   					return false;
   				}
   			}

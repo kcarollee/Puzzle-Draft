@@ -29,10 +29,19 @@
         $puzzle = array();
     $size = $N * $N;
 
+<<<<<<< HEAD
     for ($i = 0; $i < $size - 2; $i++)
             $puzzle[$i / $N][$i % $N] = $i;
     $puzzle[$N - 1][$N - 2] = -1;
     $puzzle[$N - 1][$N - 1] = -1;
+=======
+    for ($i = 0; $i < $size - 1; $i++)
+    // for ($i = 0; $i < $size - 2; $i++)
+            $puzzle[$i / $N][$i % $N] = $i;
+    // $puzzle[$N - 1][$N - 2] = -1;
+    // $puzzle[$N - 1][$N - 1] = -1;
+    $puzzle[$N - 1][$N - 1] = 0;
+>>>>>>> f072eb03e3bec7c98782339f4fc1197bd79982e3
 
     return $puzzle;
     }

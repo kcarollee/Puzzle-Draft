@@ -26,6 +26,7 @@ function setup() {
     canvas.parent("puzzle");
   
     setPuzzle();
+    
 }
 
 
@@ -47,6 +48,8 @@ function init_array() {
     }
 }
 function init_tile() {
+    console.log("javaScript init")
+
     for (var row = 0; row < puzzle_N; row++) {
         tileArray[row] = new Array(puzzle_N);
         for (var col = 0; col < puzzle_N; col++) {

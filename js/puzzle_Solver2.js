@@ -57,6 +57,7 @@ function solve() {
         sR = none_row;
         sC = none_col;
     }
+<<<<<<< HEAD
     var nR = none_row-1;
     var nC = none_col-1;
     var imgPos = new Array(tileArray[sR][sC].imgPosx, tileArray[sR][sC].imgPosy);
@@ -69,6 +70,20 @@ function solve() {
     puzzle_dist();
      none_row = nR;
      none_col = nC;
+=======
+    // var nR = none_row-1;
+    // var nC = none_col-1;
+    // var imgPos = new Array(tileArray[sR][sC].imgPosx, tileArray[sR][sC].imgPosy);
+    // tileArray[sR][sC].changeNumber(tileArray[nR][nC].getNumber());
+    // tileArray[sR][sC].changeImgPos(tileArray[nR][nC].imgPosx, tileArray[nR][nC].imgPosy);
+    // tileArray[nR][nC].changeNumber(num);
+    // tileArray[nR][nC].changeImgPos(imgPos);
+
+    console.log(`why..?`)
+    puzzle_dist();
+    // none_row = nR;
+    // none_col = nC;
+>>>>>>> f072eb03e3bec7c98782339f4fc1197bd79982e3
 }
 
 function solve_example() {

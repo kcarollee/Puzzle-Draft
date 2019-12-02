@@ -21,7 +21,10 @@
   <script type="text/javascript" src="js/tileMovement.js"></script>
   <script type="text/javascript" src="js/tileObject.js"></script>
   <script type="text/javascript" src="js/fileInput.js"></script>
+<<<<<<< HEAD
   <script type="text/javascript" src="js/puzzle_Solver2.js"></script>
+=======
+>>>>>>> f072eb03e3bec7c98782339f4fc1197bd79982e3
   <script type="text/php" src="php/puzzle.php"></script>
   <script type="text/javascript" src="js/mouse.js"></script>
 
@@ -36,10 +39,17 @@
       <input type="number" name="rowNumber" id="rowNum" min=2 max=10>
 
       <input type="submit" onclick="myInputEvent()" value="Submit">
+<<<<<<< HEAD
       <input type="button" onclick="solveInputEvent();" value="Solve">
       <input type="button" onclick="autoSolveInputEvent();" value="AutoSolve">
       <?PHP 
       if (isset($_GET['rowNumber']) AND $_GET['rowNumber'] != '') $N = $_GET['rowNumber'];
+=======
+      <input type="button" onclick="myInputEvent()" value="Auto">
+      <?PHP 
+      if (isset($_GET['rowNumber']) AND $_GET['rowNumber'] != '') 
+      $N = $_GET['rowNumber'];
+>>>>>>> f072eb03e3bec7c98782339f4fc1197bd79982e3
       
       else $N = 5;
       $puzzle = puzzle_init($N);
@@ -167,10 +177,17 @@
   console.log(numberArray);
   for (var i = 0; i < numberArray.length; i++) console.log(numberArray[i]);
 </script>
+<<<<<<< HEAD
     </form>
     <div id="puzzle"></div>
     <p id="dropzone">Drag and drop image file here</p>
   </div>
+=======
+</form>
+<div id="puzzle"></div>
+<p id="dropzone">Drag and drop image file here</p>
+</div>
+>>>>>>> f072eb03e3bec7c98782339f4fc1197bd79982e3
 </body>
 
 </html>

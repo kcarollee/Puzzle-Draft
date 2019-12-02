@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "localhost에 대해 Chrome 시작",
-            "url": "http://localhost:81/Puzzle-Draft/main.html",
+            "url": "http://localhost:81/Puzzle-Draft/main.php",
             // "url": "C:\\Bitnami\\wampstack-7.3.9-0\\apache2\\htdocs\\Puzzle-Draft\\main.html",
             "webRoot": "${workspaceFolder}",
             "runtimeArgs":[
