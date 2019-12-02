@@ -66,6 +66,7 @@ function Tile(number, posx, posy, width, height) {
 	}
 
 	this.displayImg = function (img) {
+		img.resize(this.width * sin(frameCount / 60) + this.width + 1, this.width * cos(frameCount / 60) + this.width + 1);
 		image(img, this.posx, this.posy);
 	}
 
