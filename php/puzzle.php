@@ -1,16 +1,6 @@
 <?PHP 
-<<<<<<< HEAD
-      echo $_GET['rowNumber'];
-      if (isset($_GET['rowNumber'])){
-
-       $N = $_GET['rowNumber'];
-       print "rowNUMBER: ".$N."<br>";
-     }
-    else $N = 5;
-=======
     $N =2;
     $number_array = array();
->>>>>>> 41c02653c7b6d0cd9bb4459a4ab90c522aae518b
     $puzzle = puzzle_init($N);
     $number_array = array(); // array that gets passed over to jsprint
     /*
@@ -27,20 +17,6 @@
     print("MIX 2 <br>");
     */
     $puzzle = puzzle_mix2($puzzle, $N);
-<<<<<<< HEAD
-    //puzzle_print($puzzle, $N);
-    
-    // push $puzzle elements to $number_array
-    for($i=0;$i<$N;$i++){
-        for($j=0;$j<$N;$j++){
-          if ($puzzle[$i][$j] == pow($N, 2) - 1) continue;
-          array_push($number_array, $puzzle[$i][$j] + 1);
-        }
-    }
-
-    foreach ($number_array as $elem) {
-      print $elem."<br>";
-=======
     puzzle_print($puzzle, $N);
     for($i=0;$i<$N;$i++){
             for($j=0;$j<$N;$j++){
@@ -52,26 +28,16 @@
     foreach($number_array as $n){
       print $n." ";
 
->>>>>>> 41c02653c7b6d0cd9bb4459a4ab90c522aae518b
     }
 
     function puzzle_init($N=3){
         $puzzle = array();
     $size = $N * $N;
 
-<<<<<<< HEAD
-    for ($i = 0; $i < $size - 1; $i++)
-    // for ($i = 0; $i < $size - 2; $i++)
-            $puzzle[$i / $N][$i % $N] = $i;
-    // $puzzle[$N - 1][$N - 2] = -1;
-    // $puzzle[$N - 1][$N - 1] = -1;
-    $puzzle[$N - 1][$N - 1] = 0;
-=======
     for ($i = 0; $i < $size - 2; $i++)
             $puzzle[$i / $N][$i % $N] = $i;
     $puzzle[$N - 1][$N - 2] = -1;
     $puzzle[$N - 1][$N - 1] = -1;
->>>>>>> 41c02653c7b6d0cd9bb4459a4ab90c522aae518b
 
     return $puzzle;
     }
@@ -179,11 +145,7 @@
       }
     }
 
-<<<<<<< HEAD
-        //printf($posCnt."개 unmixed <br>");
-=======
         printf($posCnt."개 unmixed <br>");
->>>>>>> 41c02653c7b6d0cd9bb4459a4ab90c522aae518b
   }
 
 ?>
