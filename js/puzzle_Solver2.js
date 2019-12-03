@@ -6,7 +6,7 @@ var answer = null;
 var un_row;
 var un_col;
 
-async function autoSolveInputEvent() {
+async function prv_autoSolveInputEvent() {
     auto_flag = !auto_flag;
 
     if(auto_flag){
@@ -16,11 +16,11 @@ async function autoSolveInputEvent() {
         clearInterval(timer);
     }    
 }
-async function solveInputEvent() {
+async function prv_solveInputEvent() {
     solve();
 }
 
-function puzzle_dist(){
+function prv_puzzle_dist(){
     un_row = new Array(puzzle_N);
     un_col = new Array(puzzle_N);
 
@@ -48,7 +48,7 @@ function puzzle_dist(){
     console.log('col  '+un_col);
 }
 
-function solve() {
+function prv_solve() {
     console.log( auto_flag ? "auto solve " : "solve");
 
     var num = tileArray[none_row][none_col].getNumber();
@@ -71,7 +71,7 @@ function solve() {
      none_col = nC;
 }
 
-function solve_example() {
+function prv_solve_example() {
     if (mode == 0 || mode == 1) {
         mode = 3;
         blocksolve = 1;

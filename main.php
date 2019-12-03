@@ -22,6 +22,7 @@
   <script type="text/javascript" src="js/tileObject.js"></script>
   <script type="text/javascript" src="js/fileInput.js"></script>
   <script type="text/javascript" src="js/puzzle_Solver2.js"></script>
+  <script type="text/javascript" src="js/puzzle_Solver3.js"></script>
   <script type="text/php" src="php/puzzle.php"></script>
   <script type="text/javascript" src="js/mouse.js"></script>
 
