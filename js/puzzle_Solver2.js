@@ -53,7 +53,7 @@ function solve() {
 
     var num = tileArray[none_row][none_col].getNumber();
 
-    if(""!=tileArray[sR][sC].getNumber()){
+    if(tileArray[sR][sC].getNumber()!=""){
         sR = none_row;
         sC = none_col;
     }

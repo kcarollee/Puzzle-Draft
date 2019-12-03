@@ -58,8 +58,8 @@ function init_tile() {
                 tileArray[row][col] = new Tile("", col * tileWidth, row * tileHeight, tileWidth, tileHeight);
                 //tileArray[row][col].imgPosx = col * tileWidth;
                 //tileArray[row][col].imgPosy = row * tileHeight;
-                none_row = row;
-                none_col = col;
+                sR = none_row = row;
+                sC = none_col = col;
             }
             else{
                 tileArray[row][col] = new Tile(numberArray[row * puzzle_N + col], col * tileWidth, row * tileHeight, tileWidth, tileHeight);
