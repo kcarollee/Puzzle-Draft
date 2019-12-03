@@ -19,6 +19,8 @@ var puzzleImg
 var testImg;
 var deg;
 
+var imgHintMode;
+
 function draw() {
   if (reset) {
     setPuzzle(puzzle_N);
@@ -80,3 +82,5 @@ function swapImgPos(tile1, tile2) {
   tile1.changeImgPos(tile2.imgPosx, tile2.imgPosy);
   tile2.changeImgPos(tempx, tempy);
 }
+
+

@@ -21,10 +21,7 @@
   <script type="text/javascript" src="js/tileMovement.js"></script>
   <script type="text/javascript" src="js/tileObject.js"></script>
   <script type="text/javascript" src="js/fileInput.js"></script>
-<<<<<<< HEAD
   <script type="text/javascript" src="js/puzzle_Solver2.js"></script>
-=======
->>>>>>> f072eb03e3bec7c98782339f4fc1197bd79982e3
   <script type="text/php" src="php/puzzle.php"></script>
   <script type="text/javascript" src="js/mouse.js"></script>
 
@@ -35,23 +32,19 @@
 <body style="background-color: rgb(50, 20, 150, 0.5)"> 
   <div id="viewContainer">
     <div id="title">NUMBER PUZZLE ver1</div>
-    <form id="rowNumInput" method="get">Number of rows:
-      <input type="number" name="rowNumber" id="rowNum" min=2 max=10>
-
+    <form id="rowNumInput" method="get">Number of rows (from 2 to 10):
+      <input type="number" name="rowNumber" id="rowNum">
       <input type="submit" onclick="myInputEvent()" value="Submit">
-<<<<<<< HEAD
+      <input type="button" onclick="hintEvent()" value="Hint">
       <input type="button" onclick="solveInputEvent();" value="Solve">
       <input type="button" onclick="autoSolveInputEvent();" value="AutoSolve">
       <?PHP 
-      if (isset($_GET['rowNumber']) AND $_GET['rowNumber'] != '') $N = $_GET['rowNumber'];
-=======
-      <input type="button" onclick="myInputEvent()" value="Auto">
-      <?PHP 
-      if (isset($_GET['rowNumber']) AND $_GET['rowNumber'] != '') 
-      $N = $_GET['rowNumber'];
->>>>>>> f072eb03e3bec7c98782339f4fc1197bd79982e3
-      
-      else $N = 5;
+      if (isset($_GET['rowNumber']) AND $_GET['rowNumber'] != ''){
+        if ($_GET['rowNumber'] > 10) $N = 10;       
+        else if ($_GET['rowNumber'] < 2) $N = 2;
+        else $N = $_GET['rowNumber'];     
+      }
+      else $N = 3;
       $puzzle = puzzle_init($N);
       $number_array = array(); // array that gets passed over to jsprint
       $puzzle = puzzle_mix($puzzle, $N);
@@ -177,17 +170,10 @@
   console.log(numberArray);
   for (var i = 0; i < numberArray.length; i++) console.log(numberArray[i]);
 </script>
-<<<<<<< HEAD
     </form>
     <div id="puzzle"></div>
     <p id="dropzone">Drag and drop image file here</p>
   </div>
-=======
-</form>
-<div id="puzzle"></div>
-<p id="dropzone">Drag and drop image file here</p>
-</div>
->>>>>>> f072eb03e3bec7c98782339f4fc1197bd79982e3
 </body>
 
 </html>
