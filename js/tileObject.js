@@ -1,4 +1,4 @@
-function Tile(number, posx, posy, size, size) {
+function Tile(number, posx, posy) {
 	this.number = number;
 	this.posx = posx;
 	this.posy = posy;
