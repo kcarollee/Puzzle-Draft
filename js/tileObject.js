@@ -20,6 +20,14 @@ function Tile(number, posx, posy) {
 		this.img = img;
 	}
 
+	this.getImg = function (){
+		return this.img;
+	}
+
+	this.changeImg = function (img) {
+		this.img = img;
+	}
+
 	this.changeNumber = function (newNum) {
 		this.number = newNum;
 	}
@@ -49,7 +57,7 @@ function Tile(number, posx, posy) {
 	}
 
 	this.displayImg = function (img) {
-		image(img, this.posx, this.posy);
+		image(this.img, this.posx, this.posy);
 	}
 
 	this.mouseMovedOver = function (x, y) {
