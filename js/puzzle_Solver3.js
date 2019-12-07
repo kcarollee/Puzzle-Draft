@@ -16,3 +16,4 @@ function solve(){
     // TODO : Fill the solving algorithm.
     console.log( auto_flag ? "auto solve " : "solve");
 }
+

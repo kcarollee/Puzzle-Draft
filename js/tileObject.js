@@ -1,5 +1,8 @@
-function Tile(number, posx, posy, width, height) {
-	this.number = number;
+function Tile(num, posx, posy, width, height) {
+	this.num = num;
+	this.row = row;
+	this.col = col;
+	zzz
 	this.posx = posx;
 	this.posy = posy;
 	this.width = width;

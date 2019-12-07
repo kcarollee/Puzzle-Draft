@@ -107,7 +107,7 @@ function prv_solve_example() {
                 }
                 //AXX
                 //XB.
-                while (blnkx > c + 2) push(0);
+                while (blnkx > c + 2) push(0);  
                 push(0, 0, 1, 3, 2, 3, 1, 0, 0, 2, 3);
             }
             rr++;
