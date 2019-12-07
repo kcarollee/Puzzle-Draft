@@ -8,7 +8,7 @@
   <meta name="Author" content="Team IPv6 / University of Seoul /">
   <meta name="description" content="Studying for web pages" />
 
-  <title >Number Puzzle ver 2 </title>
+  <title >Number Puzzle ver 3 </title>
 
   <!-- // Module // -->
   <script type="text/javascript" src="module/p5.js"></script>
@@ -21,7 +21,7 @@
   <script type="text/javascript" src="js/tileMovement.js"></script>
   <script type="text/javascript" src="js/fileInput.js"></script>
   <script type="text/javascript" src="js/puzzleSolver.js"></script>
-  <script type="text/javascript" src="js/puzzle_Solver2.js"></script>
+  <script type="text/javascript" src="js/puzzle_Solver3.js"></script>
   <script type="text/php" src="php/puzzle.php"></script>
   <script type="text/javascript" src="js/mouse.js"></script>
 
@@ -32,12 +32,14 @@
 <body style="background-color: rgb(0, 0, 0, 0.5)"> 
   <div id="viewContainer">
     <div id="title">NUMBER PUZZLE ver 3</div>
-    <form id="rowNumInput" method="get">Number of rows:
+    <form id="rowNumInput" method="get">Number of rows (from 2 to 10):
       <input type="number" name="rowNumber" id="rowNum" min=2 max=10>
 
       <input type="submit" onclick="myInputEvent()" value="Submit">
+      <input type="button" onclick="hintEvent()" value="Hint">
       <input type="button" onclick="solveInputEvent();" value="Solve">
       <input type="button" onclick="autoSolveInputEvent();" value="AutoSolve">
+
       <?PHP 
       if (isset($_GET['rowNumber']) AND 1 < $_GET['rowNumber'] AND $_GET['rowNumber']<11) 
         $N = $_GET['rowNumber'];
@@ -45,7 +47,6 @@
 
       $puzzle = puzzle_init($N);
       $number_array = array(); // array that gets passed over to jsprint
-      $puzzle = puzzle_mix($puzzle, $N);
       $puzzle = puzzle_mix2($puzzle, $N);
       // push $puzzle elements to $number_array
       for($i=0;$i<$N;$i++){
@@ -65,25 +66,6 @@
 
         return $puzzle;
       }
-
-      function puzzle_mix($puzzle = array(), $N){
-          $puzzle = puzzle_init($N);
-          $size = $N * $N;
-
-          for ($i = 0; $i < $N*$N; $i++) {
-            $src = floor(rand(0, $size-1));
-            $tgt = floor(rand(0, $size-1));
-
-            $tmp = $puzzle[$src/$N][$src%$N];
-            $puzzle[$src/$N][$src%$N] = $puzzle[$tgt/$N][$tgt%$N];
-            $puzzle[$tgt/$N][$tgt%$N] = $tmp;
-          }
-
-          $puzzle = parity_check($puzzle, $N);
-              posCount($puzzle, $N);
-          return $puzzle;
-        }
-
       function puzzle_mix2($puzzle = array(), $N){
         $puzzle = puzzle_init($N);
         $size = $N * $N;
@@ -101,12 +83,11 @@
             $puzzle[$j][$r1] = $puzzle[$j][$r2];
             $puzzle[$j][$r2] = $tmp;
           }
-
         }
 
-      $puzzle = parity_check($puzzle, $N);
-          posCount($puzzle, $N);
-      return $puzzle;
+        $puzzle = parity_check($puzzle, $N);
+        posCount($puzzle, $N);
+        return $puzzle;
       }
 
       function parity_check($puzzle, $N) {
@@ -139,7 +120,11 @@
           }
         }
 
-        if ($check % 2 == 0) {
+
+        
+        echo "<script>console.log( 'PHP_Console: " . $check . "' );</script>";
+        if ( $check % 2 == 0 ) {
+          echo "<script>console.log( 'changed' );</script>";
           $puzzle[$pos1 / $N][$pos1 % $N] = $size - 1;
           $puzzle[$pos2 / $N][$pos2 % $N] = $size - 2;
         }
@@ -165,7 +150,6 @@
 <script>
   var numberArray = <?php echo json_encode($number_array);?>;
   var puzzle_N = <?php echo json_encode($N);?>;
-  console.log(numberArray);
   for (var i = 0; i < numberArray.length; i++) console.log(numberArray[i]);
 </script>
     </form>
