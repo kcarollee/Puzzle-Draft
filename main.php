@@ -15,12 +15,12 @@
   <script type="text/javascript" src="module/p5.dom.js"></script>
 
   <!-- // JavaScript // -->
-  <script type="text/javascript" src="js/puzzle.js"></script>
   <script type="text/javascript" src="js/puzzleSetup.js"></script>
-  <script type="text/javascript" src="js/puzzleSolver.js"></script>
-  <script type="text/javascript" src="js/tileMovement.js"></script>
+  <script type="text/javascript" src="js/puzzle.js"></script>
   <script type="text/javascript" src="js/tileObject.js"></script>
+  <script type="text/javascript" src="js/tileMovement.js"></script>
   <script type="text/javascript" src="js/fileInput.js"></script>
+  <script type="text/javascript" src="js/puzzleSolver.js"></script>
   <script type="text/javascript" src="js/puzzle_Solver2.js"></script>
   <script type="text/php" src="php/puzzle.php"></script>
   <script type="text/javascript" src="js/mouse.js"></script>
@@ -31,7 +31,7 @@
 
 <body style="background-color: rgb(0, 0, 0, 0.5)"> 
   <div id="viewContainer">
-    <div id="title">NUMBER PUZZLE ver 2</div>
+    <div id="title">NUMBER PUZZLE ver 3</div>
     <form id="rowNumInput" method="get">Number of rows:
       <input type="number" name="rowNumber" id="rowNum" min=2 max=10>
 

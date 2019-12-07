@@ -26,15 +26,13 @@ function setup() {
     canvas.parent("puzzle");
   
     setPuzzle();
-    
 }
 
 
 async function setPuzzle(newNum=puzzle_N) {
     puzzle_N = newNum;
     tileArray = new Array(puzzle_N);
-    tileWidth = width / puzzle_N;
-    tileHeight = height / puzzle_N;
+    TILE_SIZE = 450 / puzzle_N;
 
     //init_array();
     init_tile();
@@ -48,26 +46,20 @@ function init_array() {
     }
 }
 function init_tile() {
-    console.log("javaScript init")
-
     for (var row = 0; row < puzzle_N; row++) {
         tileArray[row] = new Array(puzzle_N);
         for (var col = 0; col < puzzle_N; col++) {
-            tileArray[row][col] = new Tile(numberArray[row * puzzle_N + col], col * tileWidth, row * tileHeight, tileWidth, tileHeight);
-            //tileArray[row][col].imgPosx = col * tileWidth;
-            //tileArray[row][col].imgPosy = row * tileHeight;
+            tileArray[row][col] = new Tile(numberArray[row * puzzle_N + col], col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 
             if (numberArray[row * puzzle_N + col] == 0){
-                tileArray[row][col] = new Tile("", col * tileWidth, row * tileHeight, tileWidth, tileHeight);
-                //tileArray[row][col].imgPosx = col * tileWidth;
-                //tileArray[row][col].imgPosy = row * tileHeight;
-                none_row = row;
-                none_col = col;
+                tileArray[row][col] = new Tile("", col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                sR = none_row = row;
+                sC = none_col = col;
             }
             else{
-                tileArray[row][col] = new Tile(numberArray[row * puzzle_N + col], col * tileWidth, row * tileHeight, tileWidth, tileHeight);
-                //tileArray[row][col].imgPosx = col * tileWidth;
-                //tileArray[row][col].imgPosy = row * tileHeight;
+                tileArray[row][col] = new Tile(numberArray[row * puzzle_N + col], col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                //tileArray[row][col].imgPosx = col * TILE_SIZE;
+                //tileArray[row][col].imgPosy = row * TILE_SIZE;
             }
         }
     }
@@ -76,8 +68,8 @@ function init_tile() {
             for (var row = 0; row < puzzle_N; row++){
                 for (var col = 0; col < puzzle_N; col++){
                     if (tileArray[row][col].getNumber() == ""){
-                        tileArray[row][col].imgPosx = ((i - 1) % puzzle_N) * tileWidth;
-                        tileArray[row][col].imgPosy = Math.floor(((i - 1) / puzzle_N)) * tileHeight;                        
+                        tileArray[row][col].imgPosx = ((i - 1) % puzzle_N) * TILE_SIZE;
+                        tileArray[row][col].imgPosy = Math.floor(((i - 1) / puzzle_N)) * TILE_SIZE;                        
                         break;
                     }            
                 }
@@ -87,8 +79,8 @@ function init_tile() {
             for (var row = 0; row < puzzle_N; row++){
                 for (var col = 0; col < puzzle_N; col++){                
                     if (tileArray[row][col].getNumber() == i){
-                        tileArray[row][col].imgPosx = ((i - 1) % puzzle_N) * tileWidth;
-                        tileArray[row][col].imgPosy = Math.floor(((i - 1) / puzzle_N)) * tileHeight;
+                        tileArray[row][col].imgPosx = ((i - 1) % puzzle_N) * TILE_SIZE;
+                        tileArray[row][col].imgPosy = Math.floor(((i - 1) / puzzle_N)) * TILE_SIZE;
                         
                         break;
                     }

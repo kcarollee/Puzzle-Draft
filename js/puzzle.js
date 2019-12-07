@@ -1,23 +1,4 @@
-//var puzzle_N = 3; // numberOfTilesPerRow
-var none_col; // noneColIndex;
-var none_row; // noneRowIndex;
-var reset; // rowNumReset;
 
-var tileArray;
-var tileWidth;
-var tileHeight;
-//var numberArray = [];
-var randomizedNumberArray;
-var dropzone;
-var puzzleImg;
-var imgMode;
-var inputBar;
-
-var goalStateArr;
-var puzzleImg
-
-var testImg;
-var deg;
 
 function draw() {
   if (reset) {

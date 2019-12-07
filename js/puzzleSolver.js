@@ -1,34 +1,18 @@
 function puzzleSolved() {
 	
-	/*
-	// tested this code with 2x2 puzzle -> 
-	// "Uncaught TypeError: Cannot read property '1' of undefined" upon the puzzle being solved
-	var N = puzzle_N;
-	if (tileArray[N - 1][N - 1].getNumber() != "")
-		return false;
-	for (var num = 0; num < N * N - 1; num++) {
-		if (tileArray[num / N][num % N].getNumber() != num + 1)
-			return false;
-	}
-
-	return true;
-	*/
-	// replaced it with the previous code for now
-	
 	for (var row = 0; row < puzzle_N; row++){
   		for (var col = 0; col < puzzle_N; col++){
-  			
-  			if (row == puzzle_N - 1 && col == puzzle_N - 1){
-  				if (tileArray[row][col].getNumber() != ""){
-  					return false;
-  				}
-  			}
-  			else{
-  				if (tileArray[row][col].getNumber() != row * puzzle_N + col + 1){
-  					return false;
-  				}
-  			}
-  		}
+			var num = row*puzzle_N + col + 1;
+
+			if(tileArray[row][col].getNumber() == "" ){
+				if(num != puzzle_N * puzzle_N )
+					return false;
+			} 
+
+			if(tileArray[row][col].getNumber() != num ){
+			  return false;
+			}
+		}
   	}	
   	return true;
   	
