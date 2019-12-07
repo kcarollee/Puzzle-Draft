@@ -1,4 +1,5 @@
 function Tile(number, posx, posy) {
+	this.img;
 	this.number = number;
 	this.posx = posx;
 	this.posy = posy;
@@ -6,12 +7,11 @@ function Tile(number, posx, posy) {
 	this.size = TILE_SIZE;
 
 
+
+	this.color = color(50, 150, 200, 255);
 	this.initWidth = 2;
 	this.initHeight = 2;
-	this.color = color(50, 150, 200, 255);
-	this.img;
-	this.imgPosx;
-	this.imgPosy;
+
 	this.getNumber = function () {
 		return this.number;
 	}
@@ -24,28 +24,9 @@ function Tile(number, posx, posy) {
 		this.number = newNum;
 	}
 
-	this.changeImgPos = function (newPosx, newPosy) {
-		this.imgPosx = newPosx;
-		this.imgPosy = newPosy;
-	}
-
-	this.changeTilePos = function(newPosx, newPosy){
-		if (newPosx != this.posx){
-			if (newPosx > this.posx){
-				while (newPosx != this.posx) this.posx++;
-			}
-			else{
-				while (newPosx != this.posx) this.posx--;
-			}
-		}
-		else if (newPosy != this.posy){
-			if (newPosy > this.posy){
-				while (newPosy != this.posy) this.posy++;
-			}
-			else{
-				while (newPosy != this.posy) this.posy--;
-			}
-		}
+	this.changePos = function(newPosx, newPosy){
+		this.posx = newPosx;
+		this.posy = newPosy;
 	}
 
 	this.display = function () {

@@ -25,8 +25,7 @@ function draw() {
       for (var col = 0; col < puzzle_N; col++) {
         if (tileArray[row][col].getNumber() !== "") {
           tileArray[row][col].displayImg(
-            puzzleImg.get(tileArray[row][col].imgPosx,
-              tileArray[row][col].imgPosy, tileWidth, tileHeight));
+            puzzleImg.get(tileArray[row][col].imgPosx,tileArray[row][col].imgPosy, TILE_SIZE, TILE_SIZE));
         }
       }
     }

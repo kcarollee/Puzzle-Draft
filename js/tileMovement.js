@@ -31,10 +31,7 @@ function move(none_row, none_col, row, col) {
 	
 	for (var C = none_col, R = none_row; C != col || R != row ; C+=dc, R +=dr) {
 		tileArray[R][C].changeNumber(tileArray[R+dr][C + dc].getNumber());
-		tileArray[R][C].changeImgPos(tileArray[R+dr][C + dc].imgPosx, tileArray[R+dr][C + dc].imgPosy);
-		
 	}
 
 	tileArray[row][col].changeNumber(temp);
-	tileArray[row][col].changeImgPos(tempImgPosx, tempImgPosy);
 }
