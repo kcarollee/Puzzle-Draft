@@ -17,6 +17,8 @@ function hintEvent(){
 }
 
 function setup() {
+    numberOfMoves = 0;
+
     reset = false;
     // dropzone init
     deg = 0;
@@ -27,7 +29,8 @@ function setup() {
     dropzone.dragLeave(unhighlight);
     dropzone.drop(gotFile, unhighlight);
     // put setup code here
-    var canvas = createCanvas(450, 450);
+    var canvas = createCanvas(450, 500);
+    //scoreboard = createGraphics(450, 50);
     //var backgroundCanvas = createCanvas(window.innerWidth, window.innerHeight);
     canvas.parent("puzzle");
   
@@ -39,7 +42,7 @@ async function setPuzzle(newNum=puzzle_N) {
     puzzle_N = newNum;
     tileArray = new Array(puzzle_N);
     tileWidth = width / puzzle_N;
-    tileHeight = height / puzzle_N;
+    tileHeight = width / puzzle_N;
 
     //init_array();
     init_tile();

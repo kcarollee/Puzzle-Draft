@@ -80,11 +80,17 @@ function Tile(number, posx, posy, width, height) {
 			else {
 				if (imgHintMode){
 					this.display();
-					
-					img.resize(this.width - this.width * Math.abs( Math.sin(frameCount / 30)) + 1,
-						this.height);
-					image(img,this.posx +  this.width * Math.abs( Math.sin(frameCount / 30)) / 2 , this.posy);
-
+					if (frameCount / 30 < Math.PI / 2){
+						img.resize(this.width - this.width * Math.abs( Math.sin(frameCount / 30)) + 1,
+							this.height);
+						image(img,this.posx +  this.width * Math.abs( Math.sin(frameCount / 30)) / 2 , this.posy);
+					}	
+					else if (frameCount / 30 > 1.5 * Math.PI && frameCount / 30 < 2 * Math.PI){
+						img.resize(this.width - this.width * Math.abs( Math.sin(frameCount / 30)) + 1,
+							this.height);
+						image(img,this.posx +  this.width * Math.abs( Math.sin(frameCount / 30)) / 2 , this.posy);
+					}
+					else if (frameCount / 30 >= 2 * Math.PI) imgHintMode = false;
 					
 				}
 				else image(img, this.posx, this.posy);

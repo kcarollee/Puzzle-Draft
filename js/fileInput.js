@@ -1,5 +1,6 @@
 function gotFile(file) {
 	imgMode = true;
+	numberOfMoves = 0;
 	console.log(file.name);
 	puzzleImg = loadImage(file.name);
 	console.log(puzzleImg.width);

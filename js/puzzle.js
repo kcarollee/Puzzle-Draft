@@ -21,6 +21,8 @@ var deg;
 
 var imgHintMode;
 
+var numberOfMoves;
+//var scoreboard;
 function draw() {
   if (reset) {
     setPuzzle(puzzle_N);
@@ -28,6 +30,7 @@ function draw() {
     imgMode = false;
   }
   background(0);
+  //scoreboard.background(50, 20, 150, 0.5);
   
   if (puzzleSolved()) {
     tileArray.forEach(function (element) {
@@ -43,10 +46,17 @@ function draw() {
     puzzleImg.resize(450, 450);
     for (var row = 0; row < puzzle_N; row++) {
       for (var col = 0; col < puzzle_N; col++) {
-        if (tileArray[row][col].getNumber() !== "") {
-          tileArray[row][col].displayImg(
+        if (!puzzleSolved()){
+          if (tileArray[row][col].getNumber() !== "") {
+            tileArray[row][col].displayImg(
             puzzleImg.get(tileArray[row][col].imgPosx,
-              tileArray[row][col].imgPosy, tileWidth, tileHeight));
+            tileArray[row][col].imgPosy, tileWidth, tileHeight));
+          }
+        }
+        else{
+          tileArray[row][col].displayImg(
+          puzzleImg.get(tileArray[row][col].imgPosx,
+          tileArray[row][col].imgPosy, tileWidth, tileHeight));
         }
       }
     }
@@ -57,6 +67,17 @@ function draw() {
       }
     }
   }
+  drawScoreboard();
+}
+
+function drawScoreboard(){
+  noStroke();
+  fill('rgba(50, 100, 150, 0.8)');
+  rect(0, 450, 450, 50);
+  fill(255);
+  textSize(15);
+  if (!puzzleSolved()) text("Number of moves: " + String(numberOfMoves), 5, 480);
+  else text("Puzzle solved in " + String(numberOfMoves) + " moves. Press 'Submit' for a new puzzle!", 5, 480);
 }
 
 
