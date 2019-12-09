@@ -9,31 +9,30 @@ function mousePressed() {
 
 	if (tileArray[mouseR][mouseC].clicked(mouseX, mouseY)) {
 		if (mouseR == none_row || mouseC == none_col) {
-			if (!(mouseR==none_row && mouseC==none_col)) numberOfMoves++;
 			console.log("move " + "(" + none_row + "," + none_col + ")" + " to (" + mouseR + "," + mouseC + ")");
-			move(none_row, none_col, mouseR, mouseC);
-			none_row = mouseR;
-			none_col = mouseC;
-			
+			move( mouseR, mouseC);
 		}
 	}
 }
 
-function move(none_row, none_col, row, col) {
+function move( row, col) {
 	var dr = 0;
-	var dc = 0;
-	if (none_col == col) dr = none_row < row ? 1 : -1;
-	if (none_row == row) dc = none_col < col ? 1 : -1;
+	var dc = 0 ;
+	if( none_col == col ) dr = none_row < row ? 1 : -1 ;
+	if( none_row == row ) dc = none_col < col ? 1 : -1 ;
 
-	var temp = tileArray[none_row][none_col].getNumber();
-	var tempImgPosx = tileArray[none_row][none_col].imgPosx;
-	var tempImgPosy = tileArray[none_row][none_col].imgPosy;
-
-	for (var C = none_col, R = none_row; C != col || R != row ; C+=dc, R +=dr) {
-		tileArray[R][C].changeNumber(tileArray[R+dr][C + dc].getNumber());
-		tileArray[R][C].changeImgPos(tileArray[R+dr][C + dc].imgPosx, tileArray[R+dr][C + dc].imgPosy);
-	}
+	var noneTile = tileArray[none_row][none_col];
 	
-	tileArray[row][col].changeNumber(temp);
-	tileArray[row][col].changeImgPos(tempImgPosx, tempImgPosy);
+	while(none_row != row || none_col != col){
+
+		var nxtTile = tileArray[none_row+dr][none_col+dc];
+		noneTile.changeNumber( nxtTile.getNumber());
+		noneTile.changeImgPos( nxtTile.imgPosx, nxtTile.imgPosy);
+
+		none_row += dr;
+		none_col += dc;
+	}
+
+	tileArray[none_row][none_col].changeNumber("");
+	tileArray[none_row][none_col].changeImgPos(noneTile.imgPosx, noneTile.imgPosy);
 }
