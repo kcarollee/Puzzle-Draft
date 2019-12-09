@@ -10,7 +10,10 @@ function mousePressed() {
 		if(mouseR==none_row || mouseC==none_col){
 			console.log("move "+"("+none_row+","+none_col+")"+" to ("+mouseR+","+mouseC+")");
 			// increment number of moves only when tiles actually move
-			if (!(mouseR==none_row && mouseC==none_col)) numberOfMoves++;
+			if (!(mouseR==none_row && mouseC==none_col)) {
+				moveAfterSolve();
+				numberOfMoves++;
+			}
 			console.log("number of moves: " + numberOfMoves);
 			move(none_row, none_col, mouseR, mouseC);
 			none_row = mouseR;

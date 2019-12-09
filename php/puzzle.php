@@ -1,5 +1,5 @@
 <?PHP 
-    $N =2;
+    $N =5;
     $number_array = array();
     $puzzle = puzzle_init($N);
     puzzle_print($puzzle, $N);

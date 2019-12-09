@@ -22,6 +22,7 @@
   <script type="text/javascript" src="js/tileObject.js"></script>
   <script type="text/javascript" src="js/fileInput.js"></script>
   <script type="text/javascript" src="js/puzzle_Solver2.js"></script>
+  <script type="text/javascript" src="js/puzzle_Solver3.js"></script>
   <script type="text/php" src="php/puzzle.php"></script>
   <script type="text/javascript" src="js/mouse.js"></script>
 
@@ -31,7 +32,7 @@
 
 <body style="background-color: rgb(50, 20, 150, 0.5)"> 
   <div id="viewContainer">
-    <div id="title">NUMBER PUZZLE ver1</div>
+    <div id="title">NUMBER PUZZLE FINAL VERSION</div>
     <form id="rowNumInput" method="get">Number of rows (from 2 to 10):
       <input type="number" name="rowNumber" id="rowNum">
       <input type="submit" onclick="myInputEvent()" value="Submit">
