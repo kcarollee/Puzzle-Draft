@@ -62,6 +62,7 @@
 
       function puzzle_mix($puzzle = array(), $N){
         $puzzle = puzzle_init($N);
+        $puzzle = parity_check($puzzle, $N);
         $size = $N * $N;
         for ($i = 0; $i < $N * $size ; $i++) {
           $r1 = floor(rand(0, $N-1));
@@ -74,7 +75,6 @@
             $puzzle[$j][$r2] = $tmp;
           }
         }
-      $puzzle = parity_check($puzzle, $N);
       return $puzzle;
       }
       function parity_check($puzzle, $N) {
@@ -87,41 +87,35 @@
             if ($puzzle[$i][$j] < 0) {
               if ($pos1 < 0) {
                 $pos1 = $i * $N + $j;
-                $puzzle[$i][$j] = $size - 2;
+                $puzzle[$i][$j] = $size - 1;
               } else {
                 $pos2 = $i * $N + $j;
-                $puzzle[$i][$j] = $size - 1;
+                $puzzle[$i][$j] = $size - 2;
+              break;
               }
             } else if ($puzzle[$i][$j] == 0) {
               $check -= $i + $j;
             }
           }
         }
+
         for ($prev = 0; $prev < $size ; $prev++) {
-          for ($next = $prev+1 ; $next < $size; $next++) {
-              if ($puzzle[$prev/$N][$prev%$N] < $puzzle[$next/$N][$next%$N])
+          for ($next = 0 ; $next < $prev ; $next++) {
+              if ($puzzle[$next/$N][$next%$N] > $puzzle[$prev/$N][$prev%$N])
                   $check++;
           }
       }
       
-        if ($check % 2 == 0) {
-          $puzzle[$pos1 / $N][$pos1 % $N] = $size - 1;
-          $puzzle[$pos2 / $N][$pos2 % $N] = $size - 2;
+        if ($check % 2 == $puzzle_N%2) {
+          $puzzle[$pos1 / $N][$pos1 % $N] = $size - 2;
+          $puzzle[$pos2 / $N][$pos2 % $N] = $size - 1;
         }
         return $puzzle;
       }
-      function posCount($puzzle, $N) {
-        $posCnt = 0;
-        $basePuzzle = puzzle_init($N);
-        for ($i = 0; $i < $N; $i++) {
-          for ($j = 0; $j < $N; $j++) {
-            if ($puzzle[$i][$j] == $basePuzzle[$i][$j]) {
-              $posCnt++;
-            }
-          }
-        }
-      }
 ?>
+
+
+
 <script>
   var numberArray = <?php echo json_encode($number_array);?>;
   var puzzle_N = <?php echo json_encode($N);?>;

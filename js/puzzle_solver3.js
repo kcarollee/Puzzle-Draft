@@ -138,7 +138,11 @@ async function autoSolveInputEvent() {
 
     if(auto_flag){
         console.log("auto...");
-        timer = setInterval(solve, 100);
+        if(puzzle_N == 10 ) {
+            timer = setInterval(solve, 1);
+        }else{
+            timer = setInterval(solve, 50);
+        }
     }else{
         clearInterval(timer);
     }    
@@ -155,7 +159,6 @@ function solve() {
     }
 
     if( !puzzleSolved() ){
-        console.log("route[%d]: %d",routeIndex,route[routeIndex]);
         domove(route[routeIndex++]);
     }
 }

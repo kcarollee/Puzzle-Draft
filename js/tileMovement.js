@@ -24,7 +24,6 @@ function move( row, col) {
 
 	var noneTile = tileArray[none_row][none_col];
 	numberOfMoves++;
-	console.log("number of moves" + numberOfMoves)
 	while(none_row != row || none_col != col){
 		
 		var nxtTile = tileArray[none_row+dr][none_col+dc];
