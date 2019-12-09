@@ -39,24 +39,23 @@ function Tile(number, posx, posy) {
 	}
 
 	this.display = function () {
-		stroke(this.color);
-		fill(0);
-		rect(this.posx, this.posy, this.size, this.size);
-		fill(this.color);
-		if (this.initWidth <= this.size * 0.9 && this.initHeight <= this.size * 0.9){
-			rect(this.posx + this.size * 0.05, this.posy + this.size * 0.05, 
-				this.initWidth, this.initHeight, 10, 10, 10, 10);
-			this.initHeight += 12;
-			this.initWidth += 12;
-		}
-		else {
-			rect(this.posx + this.size * 0.05, this.posy + this.size * 0.05, 
-				this.size * 0.9, this.size * 0.9, 10, 10, 10, 10);
-			fill(255);
-			textSize(this.size / 4);
-			text(String(this.number), this.posx + this.size * 0.45, this.posy + this.size * 0.6);
-		}
-
+		if(this.number != ""){
+			stroke(this.color);
+			fill(0);
+			rect(this.posx, this.posy, this.size, this.size);
+			fill(this.color);
+			if (this.initWidth <= this.size * 0.9 && this.initHeight <= this.size * 0.9){
+				rect(this.posx + this.size * 0.05, this.posy + this.size * 0.05, this.initWidth, this.initHeight, 10, 10, 10, 10);
+				this.initHeight += 12;
+				this.initWidth += 12;
+			}
+			else {
+				rect(this.posx + this.size * 0.05, this.posy + this.size * 0.05, this.size * 0.9, this.size * 0.9, 10, 10, 10, 10);
+				fill(255);
+				textSize(this.size / 4);
+				text(String(this.number), this.posx + this.size * 0.45, this.posy + this.size * 0.6);
+			}
+		} 
 	}
 
 	this.displayImg = function (img) {

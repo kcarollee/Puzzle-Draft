@@ -21,7 +21,7 @@ var deg;
 
 var imgHintMode;
 
-var numberOfMoves;
+var numberOfMoves = 0;
 
 function draw() {
     if (reset) {

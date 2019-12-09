@@ -133,14 +133,12 @@ function movepiece(p,y,x){
 
 
 
-
-
 async function autoSolveInputEvent() {
     auto_flag = !auto_flag;
 
     if(auto_flag){
         console.log("auto...");
-        timer = setInterval(solve, 50);
+        timer = setInterval(solve, 100);
     }else{
         clearInterval(timer);
     }    
@@ -151,12 +149,15 @@ async function solveInputEvent() {
 }
 
 function solve() {
-    if( solut_flag == 1) {
+    if( solut_flag == 1 ) {
         solution();
         solut_flag = 0;
     }
-    console.log("route[%d]: %d",routeIndex,route[routeIndex]);
-    domove(route[routeIndex++]);
+
+    if( !puzzleSolved() ){
+        console.log("route[%d]: %d",routeIndex,route[routeIndex]);
+        domove(route[routeIndex++]);
+    }
 }
 
 
@@ -230,4 +231,29 @@ function solution(){
    console.log("none_row : %d, none_col : %d",none_row,none_col);
    routeIndex = 0;
 
+}
+
+function moveAfterSolve(){
+    route = new Array();
+    solut_flag = 1;
+}
+
+function puzzleSolved() {
+
+	for (var row = 0; row < puzzle_N; row++) {
+		for (var col = 0; col < puzzle_N; col++) {
+			var num = row * puzzle_N + col + 1;
+
+			if(num == puzzle_N*puzzle_N){
+				if(tileArray[row][col].getNumber() != ""){
+					return false;
+				}
+			}else{
+				if (tileArray[row][col].getNumber() != num) {
+					return false;
+				}
+			}
+		}
+	}
+	return true;
 }

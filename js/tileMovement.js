@@ -10,7 +10,8 @@ function mousePressed() {
 	if (tileArray[mouseR][mouseC].clicked(mouseX, mouseY)) {
 		if (mouseR == none_row || mouseC == none_col) {
 			console.log("move " + "(" + none_row + "," + none_col + ")" + " to (" + mouseR + "," + mouseC + ")");
-			move( mouseR, mouseC);
+			moveAfterSolve();
+			move( mouseR, mouseC );
 		}
 	}
 }
@@ -22,13 +23,14 @@ function move( row, col) {
 	if( none_row == row ) dc = none_col < col ? 1 : -1 ;
 
 	var noneTile = tileArray[none_row][none_col];
-	
+	numberOfMoves++;
+	console.log("number of moves" + numberOfMoves)
 	while(none_row != row || none_col != col){
-
+		
 		var nxtTile = tileArray[none_row+dr][none_col+dc];
 		noneTile.changeNumber( nxtTile.getNumber());
 		noneTile.changeImgPos( nxtTile.imgPosx, nxtTile.imgPosy);
-
+		
 		none_row += dr;
 		none_col += dc;
 	}

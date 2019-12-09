@@ -20,8 +20,7 @@
     <script type="text/javascript" src="js/tileObject.js"></script>
     <script type="text/javascript" src="js/tileMovement.js"></script>
     <script type="text/javascript" src="js/fileInput.js"></script>
-    <script type="text/javascript" src="js/puzzleSolver.js"></script>
-    <script type="text/javascript" src="js/puzzle_Solver3.js"></script>
+    <script type="text/javascript" src="js/puzzle_solver3.js"></script>
     <script type="text/php" src="php/puzzle.php"></script>
     <script type="text/javascript" src="js/mouse.js"></script>
   
@@ -45,7 +44,6 @@
       $puzzle = puzzle_init($N);
       $number_array = array(); // array that gets passed over to jsprint
       $puzzle = puzzle_mix($puzzle, $N);
-      $puzzle = puzzle_mix2($puzzle, $N);
       // push $puzzle elements to $number_array
       for($i=0;$i<$N;$i++){
           for($j=0;$j<$N;$j++){
@@ -61,21 +59,8 @@
         $puzzle[$N - 1][$N - 1] = -1;
         return $puzzle;
       }
+
       function puzzle_mix($puzzle = array(), $N){
-          $puzzle = puzzle_init($N);
-          $size = $N * $N;
-          for ($i = 0; $i < $N*$N; $i++) {
-            $src = floor(rand(0, $size-1));
-            $tgt = floor(rand(0, $size-1));
-            $tmp = $puzzle[$src/$N][$src%$N];
-            $puzzle[$src/$N][$src%$N] = $puzzle[$tgt/$N][$tgt%$N];
-            $puzzle[$tgt/$N][$tgt%$N] = $tmp;
-          }
-          $puzzle = parity_check($puzzle, $N);
-              posCount($puzzle, $N);
-          return $puzzle;
-        }
-      function puzzle_mix2($puzzle = array(), $N){
         $puzzle = puzzle_init($N);
         $size = $N * $N;
         for ($i = 0; $i < $N * $size ; $i++) {
@@ -90,7 +75,6 @@
           }
         }
       $puzzle = parity_check($puzzle, $N);
-          posCount($puzzle, $N);
       return $puzzle;
       }
       function parity_check($puzzle, $N) {
